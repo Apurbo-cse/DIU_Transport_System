@@ -1,8 +1,8 @@
 <!-- LOGO -->
 <div class="topbar-left">
     <div class="text-center">
-        <a href="index.html" class="logo"><img src="{{asset('assets/admin/images/logo.png')}}" height="50"></a>
-        <a href="index.html" class="logo-sm"><img src="{{asset('assets/admin/images/logo.png')}}" height="20"></a>
+        <a href="{{route('admin.dashboard')}}" class="logo"><img src="{{asset('assets/admin/images/logo.png')}}" height="50"></a>
+        <a href="{{route('admin.dashboard')}}" class="logo-sm"><img src="{{asset('assets/admin/images/logo.png')}}" height="20"></a>
     </div>
 </div>
 <!-- Button mobile view to collapse sidebar menu -->
