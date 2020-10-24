@@ -14,3 +14,4 @@
 <link href="{{asset('assets/admin/css/icons.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets/admin/css/style.css')}}" rel="stylesheet" type="text/css">
 
+@yield('table_css')

@@ -16,6 +16,7 @@
 
 <!-- Datatables-->
 @yield('datatable_script')
+@yield('table_script')
 
 
 <script src="{{asset('assets/admin/pages/dashborad.js')}}"></script>

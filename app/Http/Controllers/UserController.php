@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $data['users'] = User::orderBy('id','desc')->get();
+        return view('admin.user.index',$data);
     }
 
     /**
