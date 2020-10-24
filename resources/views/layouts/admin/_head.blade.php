@@ -6,6 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <link rel="shortcut icon" href="{{asset('assets/admin/images/favicon.ico')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 
 <!-- DataTables -->
 @yield('datatable_css')

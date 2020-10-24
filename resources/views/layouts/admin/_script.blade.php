@@ -13,6 +13,13 @@
 <script src="{{asset('assets/admin/js/jquery.scrollTo.min.js')}}"></script>
 
 <script src="{{asset('assets/admin/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    @if(Session::has('success'))
+    toastr.success("{{ Session::get('success') }}")
+    @endif
+</script>
+
 
 <!-- Datatables-->
 @yield('datatable_script')

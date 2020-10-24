@@ -53,6 +53,7 @@ class UserController extends Controller
         }
 
         User::create($data);
+        session()->flash('success', 'User Create Successfully');
         return redirect()->route('user.index');
 
     }
@@ -113,6 +114,7 @@ class UserController extends Controller
         }
 
         $user->update($data);
+        session()->flash('success', 'User Update Successfully');
         return redirect()->route('user.index');
     }
 
@@ -130,6 +132,7 @@ class UserController extends Controller
             unlink($user->image);
         }
         $user->destroy($user->id);
+        session()->flash('success', 'User Delated Successfully');
         return redirect()->back();
     }
 }
