@@ -76,7 +76,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['user'] = User::findOrFail($id);
+        return view('admin.user.edit', $data);
     }
 
     /**
@@ -88,7 +89,31 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'image' => 'mimes:jpeg,png|max:8192',
+        ]);
+        if ($request->password != null){
+            $data['password']=bcrypt($request->password);
+        }
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+
+        $user = User::findOrFail($id);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = 'images/user';
+            $file_name = $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $data['image'] = $path . '/' . $file_name;
+            if ($user->image != null && file_exists($user->image)) {
+                unlink($user->image);
+            }
+        }
+
+        $user->update($data);
+        return redirect()->route('user.index');
     }
 
     /**
@@ -99,6 +124,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        if(file_exists($user->image))
+        {
+            unlink($user->image);
+        }
+        $user->destroy($user->id);
+        return redirect()->back();
     }
 }
