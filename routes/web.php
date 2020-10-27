@@ -29,4 +29,5 @@ Auth::routes([
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
     Route::resource('user', 'UserController');
+    Route::resource('slider', 'SliderController');
 });
