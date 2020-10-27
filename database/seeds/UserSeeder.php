@@ -16,6 +16,9 @@ class UserSeeder extends Seeder
             'name'=>'Mizanur Rahaman',
             'email'=>'mizanur@gmail.com',
             'password'=>bcrypt('123456'),
+            'user_id' => '171-15-1452',
+            'department' => 'CSE',
+            'phone_no' => '01749969029',
         ]);
     }
 }

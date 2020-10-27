@@ -58,6 +58,33 @@
                                 </div>
                             </div>
                         <div class="form-group">
+                            <label class="col-md-2 control-label">User Id</label>
+                            <div class="col-md-10">
+                                <input name="user_id" value="{{ old('user_id') }}" type="text" class="form-control" placeholder="xxx-xx-xxxx">
+                                @error('user_id')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Department</label>
+                            <div class="col-md-10">
+                                <input name="department" value="{{ old('department') }}" type="text" class="form-control" placeholder="Department">
+                                @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Phone No</label>
+                            <div class="col-md-10">
+                                <input name="phone_no" value="{{ old('phone_no') }}" type="text" class="form-control" placeholder="017xxxxxxxx">
+                                @error('phone_no')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-2 control-label">Image</label>
                             <div class="col-md-10">
                                 <input type="file" class="form-control" name="image">

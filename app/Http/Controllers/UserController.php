@@ -39,6 +39,9 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
+            'user_id' => 'required',
+            'department' => 'required',
+            'phone_no' => 'required',
             'image' => 'mimes:jpeg,png|max:8192',
         ]);
         $data = $request->except(['_token', 'password', 'image']);
@@ -93,6 +96,9 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'user_id' => 'required',
+            'department' => 'required',
+            'phone_no' => 'required',
             'image' => 'mimes:jpeg,png|max:8192',
         ]);
         if ($request->password != null){
@@ -100,6 +106,9 @@ class UserController extends Controller
         }
         $data['name'] = $request->name;
         $data['email'] = $request->email;
+        $data['user_id'] = $request->user_id;
+        $data['department'] = $request->department;
+        $data['phone_no'] = $request->phone_no;
 
         $user = User::findOrFail($id);
         if ($request->hasFile('image')) {
