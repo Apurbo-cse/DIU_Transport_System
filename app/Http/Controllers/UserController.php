@@ -14,6 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = User::orderBy('id','desc')->get();
+        $data['serial']=1;
         return view('admin.user.index',$data);
     }
 

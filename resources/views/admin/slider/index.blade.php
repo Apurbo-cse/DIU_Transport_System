@@ -32,15 +32,15 @@
                 </div>
                 <div class="panel-body">
 
-                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                    <table id="datatable-buttons" class="table table-striped table-bordered text-center">
                         <thead>
                         <tr>
-                            <th style="width: 10px">SL#</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th style="width: 40%">Image</th>
-                            <th style="width: 12%">Actions</th>
+                            <th class="text-center" style="width: 10px">SL#</th>
+                            <th class="text-center" >Title</th>
+                            <th class="text-center" >Description</th>
+                            <th class="text-center" >Status</th>
+                            <th class="text-center" style="width: 40%">Image</th>
+                            <th class="text-center" style="width: 12%">Actions</th>
                         </tr>
                         </thead>
 
@@ -48,10 +48,10 @@
                         <tbody>
                         @foreach($sliders as $slider)
                             <tr>
-                                <td>{{$slider->id }}</td>
+                                <td>{{$serial++ }}</td>
                                 <td>{{$slider->title}}</td>
                                 <td>{{$slider->description}}</td>
-                                <td>{{$slider->status}}</td>
+                                <td>{{ucfirst($slider->status)}}</td>
                                 <td class="text-center"><img src="{{ asset($slider->image) }}"  width="20%" alt=""></td>
                                 <td class="d-flex">
                                     <a class="btn btn-info d-inline-block" href="{{ route('slider.edit',$slider->id) }}">Edit</a>
