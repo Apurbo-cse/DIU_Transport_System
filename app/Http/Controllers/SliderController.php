@@ -14,7 +14,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        $data['sliders']=Slider::orderBy('id','desc')->paginate(4);
+        return view('admin.slider.index', $data);
     }
 
     /**
@@ -24,7 +25,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slider.create');
     }
 
     /**
@@ -35,7 +36,24 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'status'=>'required|in:'.Slider::ACTIVE_STATUS.','.Slider::INACTIVE_STATUS,
+            'image'=>'required|mimes:jpeg, png, jpg|max:8192'
+        ]);
+        $data = $request->except(['_token', 'image']);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = 'images/slider';
+            $file->move($path, $file->getClientOriginalName());
+            $data['image'] = $path . '/' . $file->getClientOriginalName();
+        }
+
+        Slider::create($data);
+        session()->flash('success', 'Slider Create Successfully');
+        return redirect()->route('slider.index');
     }
 
     /**
@@ -57,7 +75,8 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        $data['slider'] = $slider;
+        return view('admin.slider.edit', $data);
     }
 
     /**
@@ -69,7 +88,28 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
+
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'status'=>'required|in:'.Slider::ACTIVE_STATUS.','.Slider::INACTIVE_STATUS,
+            'image'=>'mimes:jpeg, png|max:8192'
+        ]);
+
+        $data = $request->except(['_token', 'image']);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = 'images/slider';
+            $file->move($path, $file->getClientOriginalName());
+            $data['image'] = $path . '/' . $file->getClientOriginalName();
+            if($slider->image != null  && file_exists($slider->image)){
+                unlink($slider->image);
+            }
+        }
+
+        $slider->update($data) ;
+        session()->flash('success', 'Slider Updated Successfully');
+        return redirect()->route('slider.index');
     }
 
     /**
@@ -80,6 +120,12 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
-        //
+        if(file_exists($slider->image))
+        {
+            unlink($slider->image);
+        }
+        $slider->delete();
+        session()->flash('success', 'Slider Delated Successfully');
+        return redirect()->back();
     }
 }
