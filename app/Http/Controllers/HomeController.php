@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Slider;
+use App\Video;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $data['sliders'] = Slider::where('status', 'active')->get();
+
+        $data['videos'] = Video::where('status', 'active')->limit(1)->get();
+
         return view('frontend.home', $data);
     }
 }

@@ -23,27 +23,28 @@
                             </div>
 
                             <div class="inner-box">
+                                @foreach($videos as $video)
                                 <div class="image">
-                                    <img src="{{asset('assets/frontend/images/bus5.jpg')}}"/>
+                                    <img src="{{asset($video->image)}}"/>
                                     <div class="category"><a href="#">Video</a></div>
-                                    <a href="https://www.youtube.com/watch?v=sL0oTexGTc4" target="_blank" class="lightbox-image overlay-box">
-                                                            <span class="fa fa-play-circle"><i class="ripple">
-                                                            </i></span></a>
+                                    <a href="{{$video->link}}" target="_blank" class="lightbox-image overlay-box">
+                                        <span class="fa fa-play-circle"><i class="ripple"></i></span></a>
                                 </div>
 
                                 <div class="lower-box">
                                     <h3>
-                                        Bustand
+                                        {{$video->title}}
                                     </h3>
                                     <ul class="post-meta">
-                                        <li><span class="icon fa fa-clock-o"></span>February 16, 2020</li>
-                                        <li><span class="icon fa fa-comment-o"></span>3</li>
-                                        <li><span class="icon fa fa-eye"></span>1524</li>
+                                        <li><span class="icon fa fa-clock-o"></span>{{$video->published_at->format('M d, Y')}}</li>
+                                        <li><span class="icon fa fa-comments"></span>3</li>
+                                        <li><span class="icon fa fa-eye"></span>{{$video->view_count }}</li>
                                     </ul>
-                                    <div class="text">There is a huge transport pool on the permanent campus for students to travel. There is a bus stand next to the main campus to keep the buses safe.</div>
+                                    <div class="text">{{$video->description}}</div>
 
                                 </div>
                             </div>
+                            @endforeach
                         </div>
 
 
