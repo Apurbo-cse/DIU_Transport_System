@@ -39,4 +39,8 @@ class HomeController extends Controller
         $data['galleries'] = Gallery::where('status', 'active')->get();
         return view('frontend.gallery', $data);
     }
+    public function contact(){
+        $data['sliders'] = Slider::where('status', 'active')->get();
+        return view('frontend.contact', $data);
+    }
 }

@@ -18,6 +18,7 @@ Route::group([], function (){
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('schedule','HomeController@schedule')->name('schedule');
     Route::get('gallery','HomeController@gallery')->name('gallery');
+    Route::get('contact','HomeController@contact')->name('contact');
 });
 
 Auth::routes([
