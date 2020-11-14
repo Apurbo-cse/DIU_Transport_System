@@ -26,9 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $data['sliders'] = Slider::where('status', 'active')->get();
-
         $data['videos'] = Video::where('status', 'active')->limit(1)->get();
-
         return view('frontend.home', $data);
+    }
+    public function schedule(){
+        return view('frontend.schedule');
     }
 }
