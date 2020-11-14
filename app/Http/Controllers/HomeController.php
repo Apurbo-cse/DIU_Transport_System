@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gallery;
 use App\Slider;
 use App\Video;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class HomeController extends Controller
     }
 
     public function gallery(){
-        return view('frontend.gallery');
+        $data['galleries'] = Gallery::where('status', 'active')->get();
+        return view('frontend.gallery', $data);
     }
 }
