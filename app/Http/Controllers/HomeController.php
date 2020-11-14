@@ -29,7 +29,12 @@ class HomeController extends Controller
         $data['videos'] = Video::where('status', 'active')->limit(1)->get();
         return view('frontend.home', $data);
     }
+
     public function schedule(){
         return view('frontend.schedule');
+    }
+
+    public function gallery(){
+        return view('frontend.gallery');
     }
 }

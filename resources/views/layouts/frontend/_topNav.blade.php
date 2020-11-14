@@ -20,7 +20,7 @@
                 </div>
             </div>
         </li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="{{route('gallery')}}">Gallery</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a>	</li>
         <li><a href="user.html">Account</a></li>
@@ -29,7 +29,7 @@
 
     <div id="header-user-info-container" class="hidden-to-guest">
           <span id="robi-header-logo">
-            <a href="#"> <img src="{{asset('assets/frontend/images/logo.png')}}" ></a>
+            <a href="{{route('home')}}"> <img src="{{asset('assets/frontend/images/logo.png')}}" ></a>
           </span>
     </div>
 
