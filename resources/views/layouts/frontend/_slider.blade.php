@@ -13,6 +13,7 @@
         </div>
     </div>
     @foreach($sliders as $slider)
+
     <div class="carousel-item">
         <img src="{{asset($slider->image)}}" alt="Los Angeles" style="width: 100%; height:450px">
         <div class="carousel-caption">

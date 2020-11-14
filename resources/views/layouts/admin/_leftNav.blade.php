@@ -32,6 +32,13 @@
                     <li><a href="{{route('slider.create')}}">Create New Slider</a></li>
                 </ul>
             </li>
+            <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect"><i class="fa-caret-square-o-left"></i> <span> Video </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a href="{{route('video.index')}}">Video List</a></li>
+                    <li><a href="{{route('video.create')}}">Create New Video</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="clearfix"></div>
