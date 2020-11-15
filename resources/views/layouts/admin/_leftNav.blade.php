@@ -33,14 +33,14 @@
                 </ul>
             </li>
             <li class="has_sub">
-                <a href="javascript:void(0);" class="waves-effect"><i class="fa-caret-square-o-left"></i> <span> Video </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-video-camera"></i> <span> Video </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                 <ul class="list-unstyled">
                     <li><a href="{{route('video.index')}}">Video List</a></li>
                     <li><a href="{{route('video.create')}}">Create New Video</a></li>
                 </ul>
             </li>
             <li class="has_sub">
-                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-border-all"></i> <span> Gallery </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-image"></i> <span> Gallery </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                 <ul class="list-unstyled">
                     <li><a href="{{route('gallery.index')}}">Gallery List</a></li>
                     <li><a href="{{route('gallery.create')}}">Create New Gallery</a></li>
@@ -51,6 +51,14 @@
                 <ul class="list-unstyled">
                     <li><a href="{{route('tag.index')}}">Tag List</a></li>
                     <li><a href="{{route('tag.create')}}">Create New Tag</a></li>
+                </ul>
+            </li>
+
+            <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-layout-list-post"></i> <span> Post </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a href="{{route('post.index')}}">Post List</a></li>
+                    <li><a href="{{route('post.create')}}">Create New Post</a></li>
                 </ul>
             </li>
         </ul>
