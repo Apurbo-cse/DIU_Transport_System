@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -14,7 +15,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $data['tags'] = Tag::orderBy('created_at', 'DESC')->paginate(10);
+        $data['serial'] = 1;
+        return view('admin.tag.index', $data);
     }
 
     /**
@@ -24,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        /*return view('admin.tag.create');*/
+        return view('admin.tag.create');
     }
 
     /**
@@ -35,7 +38,18 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $this->validate($request, [
+            'name' => 'required|unique:tags,name',
+        ]);
+
+        $data = $request->except(['_token']);
+        $data['slug'] = Str::slug($request->name, '-');
+
+
+        Tag::create($data);
+        session()->flash('success', 'Tag Create Successfully');
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -57,7 +71,8 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        $data['tag']= $tag;
+        return view('admin.tag.edit', $data);
     }
 
     /**
@@ -69,7 +84,16 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        // validation
+        $this->validate($request, [
+            'name' => "required|unique:tags,name,$tag->name",
+        ]);
+        $data = $request->except(['_token']);
+        $data['slug'] = Str::slug($request->name, '-');
+
+        $tag->update($data);
+        session()->flash('success', 'Tag Update Successfully');
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -80,6 +104,12 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        if($tag){
+            $tag->delete();
+
+            session()->flash('success', 'Tag deleted successfully');
+        }
+
+        return redirect()->back();
     }
 }
