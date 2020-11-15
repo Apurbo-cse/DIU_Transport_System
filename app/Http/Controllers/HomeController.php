@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Gallery;
+use App\Post;
 use App\Slider;
 use App\Video;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data['featured_posts']=Post::where('status', 'active')->where('is_featured', 1)->limit(2)->get();
         $data['sliders'] = Slider::where('status', 'active')->get();
         $data['videos'] = Video::where('status', 'active')->limit(1)->get();
         return view('frontend.home', $data);
@@ -42,5 +44,17 @@ class HomeController extends Controller
     public function contact(){
         $data['sliders'] = Slider::where('status', 'active')->get();
         return view('frontend.contact', $data);
+    }
+    public function blog(){
+        $data['posts']=Post::where('status', 'active')->orderBy('id', 'desc')->paginate(5);
+        $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
+        return view('frontend.blog', $data);
+    }
+    public function details($id){
+        $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
+        $post=Post::findOrFail($id);
+        $post->increment('view_count');
+        $data['post']=$post;
+        return view('frontend.details', $data);
     }
 }
