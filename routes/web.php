@@ -37,4 +37,5 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
     Route::resource('slider', 'SliderController');
     Route::resource('video', 'VideoController');
     Route::resource('gallery', 'GalleryController');
+    Route::resource('tag', 'TagController');
 });
