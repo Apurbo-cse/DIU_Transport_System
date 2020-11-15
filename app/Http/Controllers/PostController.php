@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
 
 class PostController extends Controller
 {
@@ -14,7 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $data['posts'] = Post::orderBy('created_at', 'DESC')->paginate(20);
+        $data['serial'] = 1;
+        return view('admin.post.index', $data);
     }
 
     /**
@@ -24,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $data['tags'] = Tag::orderBy('name')->get();
+        return view('admin.post.create', $data);
     }
 
     /**
@@ -35,7 +41,37 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|unique:posts,title',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'status' => 'required',
+
+        ]);
+
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $path ='images/posts';
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $data['image']= $path.'/'. $file_name;
+
+        }
+
+
+        $data['title'] = $request->title;
+        $data['description'] = $request->description;
+        $data['published_at'] = Carbon::now();
+        $data['status'] = $request->status;
+
+        if ($request->has('is_featured')){
+            $data['is_featured'] = $request->is_featured;
+        }
+
+        $post = Post::create($data);
+        $post->tags()->attach($request->tags);
+        session()->flash('success', 'Post created successfully');
+        return redirect()->route('post.index');
     }
 
     /**
@@ -46,7 +82,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $data['post'] = $post;
+        return view('admin.post.show', $data);
     }
 
     /**
@@ -57,7 +94,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $data['tags'] = Tag::orderBy('name')->get();
+        $data['post'] = $post;
+        return view('admin.post.edit', $data);
     }
 
     /**
@@ -69,7 +108,38 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => "required|unique:posts,title, $post->id",
+            'description' => 'required',
+            'image'=>'image|mimes:jpeg,png,jpg|max:2048',
+            'status'=>'required',
+        ]);
+
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $path ='images/posts';
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $data['image']= $path.'/'. $file_name;
+
+            if (file_exists($post->image)){
+                unlink($post->image);
+            }
+        }
+
+        $data['title'] = $request->title;
+        $data['description'] = $request->description;
+        $data['status'] = $request->status;
+        $post->tags()->sync($request->tags);
+
+        if ($request->has('is_featured')){
+            $data['is_featured'] = $request->is_featured;
+        }
+
+
+        $post->update($data);
+        session()->flash('success', 'Post updated successfully');
+        return redirect()->route('post.index');
     }
 
     /**
@@ -80,6 +150,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post){
+            if(file_exists(($post->image))){
+                unlink($post->image);
+            }
+
+            $post->delete();
+            session()->flash('success', 'Post deleted successfully');
+        }
+
+        return redirect()->route('post.index');
     }
 }
