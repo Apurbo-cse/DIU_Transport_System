@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Gallery;
 use App\Post;
 use App\Slider;
+use App\Tag;
 use App\Video;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['featured_posts']=Post::where('status', 'active')->where('is_featured', 1)->limit(2)->get();
+        $data['featured_posts']=Post::where('status', 'active')->where('is_featured', 1)->limit(2)->paginate(2);
+        $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
         $data['sliders'] = Slider::where('status', 'active')->get();
         $data['videos'] = Video::where('status', 'active')->limit(1)->get();
+        $data['tags']=Tag::all();
         return view('frontend.home', $data);
     }
 

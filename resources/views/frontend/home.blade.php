@@ -298,29 +298,32 @@
                 <div class="news-block-four">
                     <div class="inner-box">
                         <div class="row clearfix">
-                            <div class="image-column col-lg-6 col-md-6 col-sm-12">
-                                <div class="image">
-                                    <a href="#"><img src="{{asset('assets/frontend/images/bono.jpg')}}" alt="" /></a>
+                            @foreach($featured_posts as $post)
+                                <div class="image-column col-lg-6 col-md-6 col-sm-12">
+                                    <div class="image">
+                                        <a href="#"><img src="{{asset($post->image)}}" alt="" /></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="content-box col-lg-6 col-md-6 col-sm-12">
-                                <div class="content-inner">
-                                    <div class="category"><a href="#">Bonomaya</a></div>
-                                    <h3><a href="#">Bonomaya is located at Daffodil International University</a></h3>
-                                    <ul class="post-meta">
-                                        <li><span class="icon fa fa-clock-o"></span>March 04, 2017</li>
-                                        <li><span class="icon fa fa-comment-o"></span>7</li>
-                                        <li><span class="icon fa fa-eye"></span>20</li>
-                                    </ul>
-                                    <div class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis parturient montesti…</div>
+                                <div class="content-box col-lg-6 col-md-6 col-sm-12">
+                                    <div class="content-inner">
+                                        <div class="category"><a href="#">Bonomaya</a></div>
+                                        <h3><a href="#">{{$post->title}}</a></h3>
+                                        <ul class="post-meta">
+                                            <li><span class="icon fa fa-clock-o"></span>{{$post->published_at->format('M d, Y')}}</li>
+                                            <li><span class="icon fa fa-comments"></span>7</li>
+                                            <li><span class="icon fa fa-eye"></span>{{$post->view_count}}</li>
+                                        </ul>
+                                        <div class="text">{{Str::limit($post->description, 170)}}</div>
+                                        <a href="{{route('post.details', $post->id)}}" class="read-more">Read More </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <!-- END News Block Four-->
 
-                <!--News Block Four-->
+                {{--<!--News Block Four-->
                 <div class="news-block-four">
                     <div class="inner-box">
                         <div class="row clearfix">
@@ -344,12 +347,21 @@
                         </div>
                     </div>
                 </div>
-                <!-- END News Block Four-->
-
-            </div>
-        </div>
+                <!-- END News Block Four-->--}}
+                <div class="row mt-5">
+                    <div class="col-md-12 text-center">
+                        <nav aria-label="Page navigation" class="text-center">
+                            <ul class="pagination">
+                                {{$featured_posts->render()}}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
+
+             </div>
+          </div>
+       </div>
+     </div>
 
                 <!--Sidebar-->
                 <!--Sidebar Side-->

@@ -59,25 +59,13 @@
                         <!--Tab / Active Tab-->
                         <div class="tab active-tab" id="prod-popular">
                             <div class="content">
-
+                              @foreach($popular_posts as $post)
                                 <article class="widget-post">
-                                    <figure class="post-thumb"><a href="#"><img src="{{asset('assets/frontend/images/bonomaya.jpg')}}" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
-                                    <div class="text"><a href="#">Bonomaya at Daffodil International University</a></div>
-                                    <div class="post-info">March 01, 2020</div>
+                                    <figure class="post-thumb"><a href="{{route('post.details', $post->id)}}"><img src="{{asset($post->image)}}" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                    <div class="text"><a href="{{route('post.details', $post->id)}}">{{$post->title}}</a></div>
+                                    <div class="post-info">{{date('M d, Y', strtotime($post->published_at))}}</div>
                                 </article>
-
-                                <article class="widget-post">
-                                    <figure class="post-thumb"><a href="#"><img src="{{asset('assets/frontend/images/know.jpg')}}" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
-                                    <div class="text"><a href="#">Knowledge Valley at Daffodil International University<</a></div>
-                                    <div class="post-info">January 03, 2020</div>
-                                </article>
-
-                                <article class="widget-post">
-                                    <figure class="post-thumb"><a href="#"><img src="{{asset('assets/frontend/images/ino.jpg')}}" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
-                                    <div class="text"><a href="#">The largest inovation lab in Private University of Bangladesh</a></div>
-                                    <div class="post-info">January 03, 2020</div>
-                                </article>
-
+                              @endforeach
                             </div>
                         </div>
 
