@@ -20,7 +20,7 @@ Route::group([], function (){
     Route::get('gallery','HomeController@gallery')->name('gallery');
     Route::get('contact','HomeController@contact')->name('contact');
     Route::get('blog','HomeController@blog')->name('blog');
-    Route::get('details','HomeController@details')->name('details');
+    Route::get('post/{id}/details','HomeController@details')->name('post.details');
 });
 
 Auth::routes([

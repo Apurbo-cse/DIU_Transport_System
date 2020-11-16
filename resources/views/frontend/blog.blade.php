@@ -23,19 +23,19 @@
                           @foreach($posts as $post)
                             <div class="image-column col-lg-6 col-md-6 col-sm-12">
                                 <div class="image">
-                                    <a href="{{route('details')}}"><img src="{{$post->image}}" alt="" /></a>
+                                    <a href="{{route('post.details', $post->id)}}"><img src="{{$post->image}}" alt="" /></a>
                                 </div>
                             </div>
                             <div class="content-box col-lg-6 col-md-6 col-sm-12">
                                 <div class="content-inner">
-                                    <h3><a href="{{route('details')}}">{{$post->title}}</a></h3>
+                                    <h3><a href="{{route('post.details', $post->id)}}">{{$post->title}}</a></h3>
                                     <ul class="post-meta">
                                         <li><span class="icon fa fa-clock-o"></span>{{$post->published_at->format('M d, Y')}}</li>
                                         <li><span class="icon fa fa-comments"></span>9</li>
                                         <li><span class="icon fa fa-eye"></span>{{$post->view_count }}</li>
                                     </ul>
                                     <div class="text">{{Str::limit($post->description, 170)}}</div>
-                                    <a href="{{route('details')}}" class="read-more">Read More </a>
+                                    <a href="{{route('post.details', $post->id)}}" class="read-more">Read More </a>
                                 </div>
                             </div>
                           @endforeach
