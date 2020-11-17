@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Bus_Category;
+use App\Route;
 use App\Stuff;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,9 @@ class StuffController extends Controller
      */
     public function create()
     {
-        //
+        $data['bus_categories'] = Bus_Category::orderBy('name')->get();
+        $data['routes'] = Route::orderBy('route_name')->get();
+        return view('admin.stuff.create', $data);
     }
 
     /**
@@ -35,8 +39,34 @@ class StuffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_id' => 'required',
+            'route_id' => 'required',
+            'bus_name' => 'required|unique:stuffs,bus_name',
+            'designation' => 'required',
+            'driver_name' => 'required|unique:stuffs,driver_name',
+            'driver_phone' => 'required|min:11|numeric',
+            'helper_name' => 'required|unique:stuffs,helper_name',
+            'helper_phone' => 'required|min:11|numeric',
+            'status' => 'required',
+        ]);
+
+        $data['category_id'] = $request->category_id;
+        $data['route_id'] = $request->route_id;
+        $data['bus_name'] = $request->bus_name;
+        $data['designation'] = $request->designation;
+        $data['driver_name'] = $request->driver_name;
+        $data['driver_phone'] = $request->driver_phone;
+        $data['helper_name'] = $request->helper_name;
+        $data['helper_phone'] = $request->helper_phone;
+        $data['status'] = $request->status;
+
+
+        Stuff::create($data);
+        session()->flash('success', 'Stuff Create Successfully');
+        return redirect()->route('stuff.index');
     }
+
 
     /**
      * Display the specified resource.

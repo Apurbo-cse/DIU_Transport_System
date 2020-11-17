@@ -22,9 +22,9 @@ class CreateStuffsTable extends Migration
             $table->string('bus_name')->nullable();
             $table->string('designation');
             $table->string('driver_name');
-            $table->smallInteger('driver_phone');
+            $table->string('driver_phone');
             $table->string('helper_name');
-            $table->smallInteger('helper_phone');
+            $table->string('helper_phone');
             $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });
