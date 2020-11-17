@@ -69,6 +69,13 @@
                 </ul>
             </li>
             <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-menu-alt"></i> <span> Route </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a href="{{route('route.index')}}">Route List</a></li>
+                    <li><a href="{{route('route.create')}}">Create New Route</a></li>
+                </ul>
+            </li>
+            <li class="has_sub">
                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-layers"></i> <span> Service </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                 <ul class="list-unstyled">
                     <li><a href="{{route('service.index')}}">Service List</a></li>
