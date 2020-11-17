@@ -18,4 +18,12 @@ class Stuff extends Model
         'status',
     ];
 
+    public function category(){
+        return $this->belongsTo(Bus_Category::class);
+    }
+
+    public function route()
+    {
+        return $this->belongsTo(Route::class);
+    }
 }

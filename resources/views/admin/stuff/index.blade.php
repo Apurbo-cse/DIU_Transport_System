@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Post List')
+@section('title', 'Stuff List')
 @section('table_css')
     <!-- DataTables -->
     <link href="{{asset('assets/admin/plugins/datatables/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
@@ -15,10 +15,10 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="page-header-title">
-                <h4 class="pull-left page-title">List Of Post</h4>
+                <h4 class="pull-left page-title">List Of Stuff</h4>
                 <ol class="breadcrumb pull-right">
                     <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                    <li class="active">Post List</li>
+                    <li class="active">Stuff List</li>
                 </ol>
                 <div class="clearfix"></div>
             </div>
@@ -28,7 +28,7 @@
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Post List</h3>
+                    <h3 class="panel-title">Stuff List</h3>
                 </div>
                 <div class="panel-body">
 
@@ -36,39 +36,36 @@
                         <thead>
                         <tr>
                             <th class="text-center" style="width: 10px">SL#</th>
-                            <th class="text-center" >Title</th>
-                            <th class="text-center" >Tags</th>
-                            <th class="text-center" >Create Date</th>
-                            <th class="text-center" >Featured</th>
+                            <th class="text-center" >Bus Category</th>
+                            <th class="text-center" >Route Name</th>
+                            <th class="text-center" >Bus Name</th>
+                            <th class="text-center" >Designation</th>
+                            <th class="text-center" >Driver Name</th>
+                            <th class="text-center" >Driver Phone</th>
+                            <th class="text-center" >Helper Name</th>
+                            <th class="text-center" >Helper Phone</th>
                             <th class="text-center" >Status</th>
-                            <th class="text-center" >Image</th>
-                            <th class="text-center" style="width: 18.5%">Actions</th>
+                            <th class="text-center" style="width: 12%">Actions</th>
                         </tr>
                         </thead>
 
 
                         <tbody>
-                        @foreach($posts as $post)
+                        @foreach($stuffs as $stuff)
                             <tr>
                                 <td>{{$serial++ }}</td>
-                                <td>{{$post->title}}</td>
-                                <td>
-                                    @foreach($post->tags as $tag)
-                                        <span class="badge badge-primary">{{ $tag->name }} </span>
-                                    @endforeach
-                                </td>
-                                <td>{{$post->published_at->format('d M, Y')}}</td>
-                                <td>{{$post->is_featured}}</td>
-                                <td>{{ucfirst($post->status)}}</td>
-                                <td class="text-center">
-                                    <div  style="max-width: 70px; max-height:70px;overflow:hidden">
-                                        <img src="{{ asset($post->image) }}" class="img-fluid img-rounded" alt="">
-                                    </div>
-                                </td>
+                                <td>{{$stuff->category->name}}</td>
+                                <td>{{$stuff->route->route_name}}</td>
+                                <td>{{$stuff->bus_name}}</td>
+                                <td>{{$stuff->designation}}</td>
+                                <td>{{$stuff->driver_name}}</td>
+                                <td>{{$stuff->driver_phone}}</td>
+                                <td>{{$stuff->helper_name}}</td>
+                                <td>{{$stuff->helper_phone}}</td>
+                                <td>{{ucfirst($stuff->status)}}</td>
                                 <td class="d-flex">
-                                    <a class="btn btn-info d-inline-block" href="{{ route('post.show', $post->id) }}">Details</a>
-                                    <a class="btn btn-info d-inline-block" href="{{ route('post.edit', $post->id) }}">Edit</a>
-                                    <form class="d-inline-block pull-right" method="post" action="{{ route('post.destroy', $post->id) }}">
+                                    <a class="btn btn-info d-inline-block" href="{{ route('stuff.edit', $stuff->id) }}">Edit</a>
+                                    <form class="d-inline-block pull-right" method="post" action="{{ route('stuff.destroy', $stuff->id) }}">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" onclick="return confirm('Are you confirm to delete?')">Delete</button>

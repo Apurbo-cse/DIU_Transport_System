@@ -11,4 +11,8 @@ class Bus_Category extends Model
         'description',
         'status',
     ];
+    public function stuff()
+    {
+        return $this->hasMany(Stuff::class);
+    }
 }

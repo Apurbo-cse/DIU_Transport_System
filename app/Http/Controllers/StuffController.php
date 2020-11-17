@@ -16,7 +16,9 @@ class StuffController extends Controller
      */
     public function index()
     {
-        //
+        $data['stuffs'] = Stuff::orderBy('created_at', 'DESC')->paginate(20);
+        $data['serial'] = 1;
+        return view('admin.stuff.index', $data);
     }
 
     /**

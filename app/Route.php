@@ -11,4 +11,9 @@ class Route extends Model
       'route_description',
       'status',
     ];
+
+    public function stuff()
+    {
+        return $this->hasMany(Stuff::class);
+    }
 }
