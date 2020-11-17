@@ -14,7 +14,9 @@ class RouteController extends Controller
      */
     public function index()
     {
-        //
+        $data['routes'] = Route::orderBy('created_at', 'DESC')->paginate(20);
+        $data['serial'] = 1;
+        return view('admin.route.index', $data);
     }
 
     /**
@@ -24,7 +26,7 @@ class RouteController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.route.create');
     }
 
     /**
@@ -35,7 +37,21 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:routes,name',
+            'status' => 'required',
+
+        ]);
+
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+        $data['status'] = $request->status;
+
+
+
+        Route::create($data);
+        session()->flash('success', 'Route Create Successfully');
+        return redirect()->route('route.index');
     }
 
     /**
@@ -57,7 +73,8 @@ class RouteController extends Controller
      */
     public function edit(Route $route)
     {
-        //
+        $data['route']=$route;
+        return view('admin.route.edit', $data);
     }
 
     /**
@@ -69,7 +86,19 @@ class RouteController extends Controller
      */
     public function update(Request $request, Route $route)
     {
-        //
+        $request->validate([
+            'name' => "required|unique:bus__categories,name,$route->id",
+            'status' => 'required',
+
+        ]);
+
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+        $data['status'] = $request->status;
+
+        $route->update($data);
+        session()->flash('success', 'Route Update Successfully');
+        return redirect()->route('route.index');
     }
 
     /**
@@ -80,6 +109,8 @@ class RouteController extends Controller
      */
     public function destroy(Route $route)
     {
-        //
+        $route->delete();
+        session()->flash('success', 'Route Deleted Successfully');
+        return redirect()->route('route.index');
     }
 }
