@@ -48,8 +48,8 @@
                         @foreach($routes as $route)
                             <tr>
                                 <td>{{$serial++ }}</td>
-                                <td>{{$route->name}}</td>
-                                <td>{{$route->description}}</td>
+                                <td>{{$route->route_name}}</td>
+                                <td>{{$route->route_description}}</td>
                                 <td>{{ucfirst($route->status)}}</td>
                                 <td class="d-flex">
                                     <a class="btn btn-info d-inline-block" href="{{ route('route.edit', $route->id) }}">Edit</a>

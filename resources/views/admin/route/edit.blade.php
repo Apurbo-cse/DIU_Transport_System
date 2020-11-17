@@ -25,8 +25,8 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Route Name</label>
                             <div class="col-md-10">
-                                <input value="{{$route->name}}" name="name" type="text" id="name" class="form-control" placeholder="Route Name">
-                                @error('name')
+                                <input value="{{$route->route_name}}" name="route_name" type="text" id="route_name" class="form-control" placeholder="Route Name">
+                                @error('route_name')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -34,8 +34,8 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label"> Description</label>
                             <div class="col-md-10">
-                                <textarea name="description" class="form-control" rows="5" placeholder="Route Description">{{$route->description}}</textarea>
-                                @error('description')
+                                <textarea name="route_description" class="form-control" rows="5" placeholder="Route Description">{{$route->route_description}}</textarea>
+                                @error('route_description')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

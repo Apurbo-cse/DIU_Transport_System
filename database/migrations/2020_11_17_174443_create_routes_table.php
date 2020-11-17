@@ -15,8 +15,8 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('description')->nullable();
+            $table->string('route_name')->unique();
+            $table->text('route_description')->nullable();
             $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });

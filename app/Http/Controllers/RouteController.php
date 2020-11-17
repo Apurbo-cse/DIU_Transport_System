@@ -12,6 +12,8 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $data['routes'] = Route::orderBy('created_at', 'DESC')->paginate(20);
@@ -38,13 +40,13 @@ class RouteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:routes,name',
+            'route_name' => 'required|unique:routes,route_name',
             'status' => 'required',
 
         ]);
 
-        $data['name'] = $request->name;
-        $data['description'] = $request->description;
+        $data['route_name'] = $request->route_name;
+        $data['route_description'] = $request->route_description;
         $data['status'] = $request->status;
 
 
@@ -87,13 +89,13 @@ class RouteController extends Controller
     public function update(Request $request, Route $route)
     {
         $request->validate([
-            'name' => "required|unique:bus__categories,name,$route->id",
+            'route_name' => "required|unique:routes,route_name,$route->id",
             'status' => 'required',
 
         ]);
 
-        $data['name'] = $request->name;
-        $data['description'] = $request->description;
+        $data['route_name'] = $request->route_name;
+        $data['route_description'] = $request->route_description;
         $data['status'] = $request->status;
 
         $route->update($data);
@@ -113,4 +115,5 @@ class RouteController extends Controller
         session()->flash('success', 'Route Deleted Successfully');
         return redirect()->route('route.index');
     }
+
 }

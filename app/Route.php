@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Route extends Model
 {
     protected $fillable = [
-        'name',
-        'description',
-        'status',
+      'route_name',
+      'route_description',
+      'status',
     ];
 }
