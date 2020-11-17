@@ -41,4 +41,5 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
     Route::resource('gallery', 'GalleryController');
     Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
+    Route::resource('service', 'ServiceController');
 });

@@ -61,6 +61,13 @@
                     <li><a href="{{route('post.create')}}">Create New Post</a></li>
                 </ul>
             </li>
+            <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-layers"></i> <span> Service </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a href="{{route('service.index')}}">Service List</a></li>
+                    <li><a href="{{route('service.create')}}">Create New Service</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="clearfix"></div>
