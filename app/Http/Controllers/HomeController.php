@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gallery;
 use App\Post;
+use App\Service;
 use App\Slider;
 use App\Tag;
 use App\Video;
@@ -59,5 +60,10 @@ class HomeController extends Controller
         $post->increment('view_count');
         $data['post']=$post;
         return view('frontend.details', $data);
+    }
+    public function service(){
+        $data['sliders'] = Slider::where('status', 'active')->get();
+        $data['services'] = Service::where('status', 'active')->get();
+        return view('frontend.service', $data);
     }
 }
