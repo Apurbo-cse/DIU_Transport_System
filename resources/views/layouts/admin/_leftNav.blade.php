@@ -62,6 +62,13 @@
                 </ul>
             </li>
             <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-menu"></i> <span> Bus Category </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a href="{{route('bus_category.index')}}">Category List</a></li>
+                    <li><a href="{{route('bus_category.create')}}">Create New Category</a></li>
+                </ul>
+            </li>
+            <li class="has_sub">
                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-layers"></i> <span> Service </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                 <ul class="list-unstyled">
                     <li><a href="{{route('service.index')}}">Service List</a></li>
