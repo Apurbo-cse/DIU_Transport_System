@@ -66,4 +66,10 @@ class HomeController extends Controller
         $data['services'] = Service::where('status', 'active')->get();
         return view('frontend.service', $data);
     }
+
+    public function transportinfo(){
+
+        return view('frontend.transportinfo');
+
+    }
 }

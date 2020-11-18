@@ -1,6 +1,5 @@
 @extends('layouts.frontend.master')
 @section('title', 'Service')
-
 @section('servics_css')
     <link rel="stylesheet" href="{{asset('assets/frontend/style/service-info.css')}}" />
 @endsection
@@ -31,7 +30,7 @@
                         </div>
 
                         <div class="serbtn">
-                            <a href="#">Contact</a>
+                            <a href="{{route('transportinfo')}}">Contact</a>
                         </div>
                     </div>
                @endforeach

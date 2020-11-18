@@ -22,6 +22,7 @@ Route::group([], function (){
     Route::get('blog','HomeController@blog')->name('blog');
     Route::get('post/{id}/details','HomeController@details')->name('post.details');
     Route::get('service','HomeController@service')->name('service');
+    Route::get('transportinfo','HomeController@transportinfo')->name('transportinfo');
 });
 
 Auth::routes([
