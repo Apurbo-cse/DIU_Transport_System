@@ -1,5 +1,10 @@
 @extends('layouts.frontend.master')
 @section('title', 'Blog')
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
+@endsection
+
 @section('content')
 <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
 </div>
@@ -10,10 +15,18 @@
 
         <!--Content Side-->
         <div class="content-side col-lg-8 col-md-12 col-sm-12">
-            <!--Sec Title-->
-            <div class="sec-title">
-                <h2>Latest News</h2>
+
+            <!--Marquee-->
+            <div class="sec-news">
+                <marquee> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </marquee>
             </div>
+            <div class="letest-title">
+                <p>Letest News</p>
+            </div>
+            <!--Marquee End-->
+
+
             <div class="content-blocks">
 
                 <!--News Block Four-->
@@ -34,8 +47,7 @@
                                         <li><span class="icon fa fa-comments"></span>9</li>
                                         <li><span class="icon fa fa-eye"></span>{{$post->view_count }}</li>
                                     </ul>
-                                    <div class="text">{{Str::limit($post->description, 170)}}</div>
-                                    <a href="{{route('post.details', $post->id)}}" class="read-more">Read More </a>
+                                    <div class="text">{{Str::limit($post->description, 170)}}...<a href="{{route('post.details', $post->id)}}" class="read-more">Read More </a></div>
                                 </div>
                             </div>
                           @endforeach
@@ -44,38 +56,22 @@
                 </div>
                 <!-- END News Block Four-->
 
-                {{--<!-- Pagination -->
+
+            <!-- Pagination -->
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item active">
-                                <span class="page-link">
-                                  1
-                                  <span class="sr-only">(current)</span>
-                                </span>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
+                    <ul class="pagination justify-content-center" style="font-size: 14px;padding: 5px;">
+                        <li class="page-item ">
+                            <span class="page-link">
+                                {{$posts->render()}}
+                                <span class="sr-only">(current)</span>
+                            </span>
                         </li>
                     </ul>
                 </nav>
-                <!-- Pagination End -->--}}
-                <div class="row mt-5">
-                    <div class="col-md-12 text-center">
-                        <nav aria-label="Page navigation" class="text-center">
-                            <ul class="pagination">
-                                {{$posts->render()}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+           <!-- Pagination End -->
+
+
                 <br><br>
-
-
             </div>
         </div>
 

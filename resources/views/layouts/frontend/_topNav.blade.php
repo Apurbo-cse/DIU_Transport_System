@@ -4,18 +4,21 @@
         <li><a href="{{route('schedule')}}">Schedule</a></li>
         <li><a href="{{route('service')}}">Service</a></li>
         <li><a href="buyticket.html">Buy Ticket</a></li>
-        <li><div class="dropdown">
+        <li>
+            <div class="dropdown">
                 <a class="dropbtn" style="color: white;">Facilities</a>
                 <div class="dropdown-content">
-                    <a href="maps.html">Locate Bus</a>
+                    <a href="{{asset('maps')}}">Locate Bus</a>
                     <a href="#">Facial Recognition</a>
                 </div>
-            </div></li>
-        <li><div class="dropdown">
+            </div>
+        </li>
+        <li>
+            <div class="dropdown">
                 <a class="dropbtn" style="color: white;">Info</a>
                 <div class="dropdown-content">
                     <a href="about.html">About</a>
-                    <a href="{{route('transportinfo')}}">Transport Info</a>
+                    <a href="trnasportinfo.html">Transport Info</a>
                     <a href="developers.html">Developers</a>
                 </div>
             </div>

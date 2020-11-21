@@ -1,8 +1,8 @@
 @extends('layouts.frontend.master')
 @section('title', 'Schedule')
 @section('content')
-    <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
-    </div>
+    <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -16,9 +16,9 @@
                     </div>
 
                     <h2 style="color: rgb(8, 43, 88);text-align: center;">DIU Transport Schedule</h2>
-
+                    <br>
                 </div>
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="font-size: 14px;">
 
                     <tr style="background-color:#066479; ;color: rgb(252, 250, 250);">
                         <th>From</th>
@@ -27,7 +27,8 @@
                     </tr>
 
                     <tr>
-                        <td colspan="3" style="background-color: #05243aa2;color: rgb(255, 249, 249);">City Campus Route</td>
+                        <td colspan="3" style="background-color: #05243aa2;color: rgb(255, 249, 249);">City Campus Route
+                        </td>
                     </tr>
 
                     <tr>
@@ -64,8 +65,8 @@
                         <td>10.00 am</td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="background-color: #05243aa2;color: rgb(255, 249, 249);">Tongi College Gate
-                            Route</td>
+                        <td colspan="3" style="background-color: #05243aa2;color: rgb(255, 249, 249);">Tongi College Gate Route
+                        </td>
                     </tr>
                     <tr>
                         <td rowspan="3">Tongi College Gate</td>
@@ -99,8 +100,7 @@
                         <td>7.45 am</td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="background-color: #05243aa2;color: rgb(255, 249, 249);">Daffodil Internatinal
-                            University Route</td>
+                        <td colspan="3" style="background-color: #05243aa2;color: rgb(255, 249, 249);">Daffodil Internatinal University Route</td>
                     </tr>
                     <tr>
                         <td rowspan="6">Daffodil International University</td>
@@ -177,8 +177,7 @@
                     </tr>
                     <tr>
                         <td rowspan="3">Daffodil Internatinal University</td>
-                        <td rowspan="3">6.00 pm
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td rowspan="3">6.00 pm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>Tongi College gate via Abdullapur</td>
                     </tr>
@@ -191,9 +190,7 @@
                 </table>
                 <div class="row" style="color: tomato;">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        * DIU = Daffodil Internatinal University.<br>
-                        * CC = City Campus, Dhanmondi.<br>
-                        * UC = Uttara Campus , Uttara.
+                        * DIU = Daffodil Internatinal University.<br> * CC = City Campus, Dhanmondi.<br> * UC = Uttara Campus , Uttara.
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
@@ -203,5 +200,8 @@
 
             </div>
         </div>
+    </div>
+
+    </div>
     </div>
 @endsection

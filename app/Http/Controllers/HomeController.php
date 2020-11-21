@@ -32,6 +32,7 @@ class HomeController extends Controller
     {
         $data['featured_posts']=Post::where('status', 'active')->where('is_featured', 1)->limit(2)->paginate(2);
         $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
+        $data['latest_news']=Post::where('status', 'active')->orderBy('id', 'desc')->limit(3)->get();
         $data['sliders'] = Slider::where('status', 'active')->get();
         $data['videos'] = Video::where('status', 'active')->limit(1)->get();
         $data['tags']=Tag::all();
@@ -51,11 +52,13 @@ class HomeController extends Controller
         return view('frontend.contact', $data);
     }
     public function blog(){
+        $data['latest_news']=Post::where('status', 'active')->orderBy('id', 'desc')->limit(3)->get();
         $data['posts']=Post::where('status', 'active')->orderBy('id', 'desc')->paginate(5);
         $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
         return view('frontend.blog', $data);
     }
     public function details($id){
+        $data['latest_news']=Post::where('status', 'active')->orderBy('id', 'desc')->limit(3)->get();
         $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
         $post=Post::findOrFail($id);
         $post->increment('view_count');
@@ -71,6 +74,16 @@ class HomeController extends Controller
     public function transportinfo(){
 
         return view('frontend.transportinfo');
+
+    }
+    public function locate(){
+
+        return view('frontend.maps');
+
+    }
+    public function cityroute(){
+
+        return view('frontend.cityroute');
 
     }
 }

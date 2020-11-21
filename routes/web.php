@@ -23,6 +23,8 @@ Route::group([], function (){
     Route::get('post/{id}/details','HomeController@details')->name('post.details');
     Route::get('service','HomeController@service')->name('service');
     Route::get('transportinfo','HomeController@transportinfo')->name('transportinfo');
+    Route::get('maps','HomeController@locate')->name('maps');
+    Route::get('cityroute','HomeController@cityroute')->name('cityroute');
 });
 
 Auth::routes([

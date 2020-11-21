@@ -1,5 +1,8 @@
 @extends('layouts.frontend.master')
 @section('title', $post->title)
+@section('css')
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
+@endsection
 @section('content')
     <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
     </div>
