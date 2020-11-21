@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bus_Category;
 use App\Gallery;
 use App\Post;
 use App\Service;
