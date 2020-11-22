@@ -19,7 +19,7 @@
                 <div class="dropdown-content">
                     <a href="about.html">About</a>
                     <a href="{{route('developers')}}">Developers</a>
-                    <a href="trnasportinfo.html">Transport Info</a>
+                    <a href="{{route('transportinfo')}}">Transport Info</a>
                 </div>
             </div>
         </li>
