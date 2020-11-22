@@ -89,4 +89,8 @@ class HomeController extends Controller
         return view('frontend.profile');
 
     }
+    public function developers(){
+        return view('frontend.developers');
+
+    }
 }

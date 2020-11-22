@@ -26,6 +26,7 @@ Route::group([], function (){
     Route::get('maps','HomeController@locate')->name('maps');
     Route::get('cityroute','HomeController@cityroute')->name('cityroute');
     Route::get('profile','HomeController@profile')->name('profile');
+    Route::get('developers','HomeController@developers')->name('developers');
 });
 
 Auth::routes([
