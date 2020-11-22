@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bus_Category;
 use App\Gallery;
 use App\Post;
+use App\Route;
 use App\Service;
 use App\Slider;
 use App\Tag;
@@ -77,8 +78,8 @@ class HomeController extends Controller
 
     }
     public function locate(){
-
-        return view('frontend.maps');
+        $data['routes']=Route::where('status', 'active')->orderBy('id', 'asc')->limit(4)->get();
+        return view('frontend.maps', $data);
 
     }
     public function cityroute(){

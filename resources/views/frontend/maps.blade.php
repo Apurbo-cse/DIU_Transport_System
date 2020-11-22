@@ -30,8 +30,9 @@
                     <p>The DIU Automated Transportation System brings you a new technology. You can track your specific bus using this <br> <b> Terms of use:</b>&nbsp;&nbsp; Press the buttons below to track the bus and turn on the bus voice (you will be
                         called again) and off. And also you can make call, then auto recieve after 3 rings. Write DW send bus route number and you will get a return message url link, where you will see the location of the bus.<br> <b> Write
                             message opotion :
-                        </b> <br> 1. Bus track : DW <br>2. Voice On : 1111 <br> 3. Voice Off : 0000 <br>send to this Locate Bus ID number .
-                        <br> <b style="color: red;">Use your Phone</b></p>
+                        </b><br> 1. Bus track : DW <br>2. Voice On : 1111 <br> 3. Voice Off : 0000 <br>send to this Locate Bus ID number .<br>
+                        <b style="color: red;">Use your Phone</b>
+                    </p>
 
                 </div>
             </div>
@@ -41,30 +42,14 @@
         <div class="containerq ">
             <h1 class="section-headingq ">Locate Bus Route</h1>
             <div class="card-wrapperq flexq" style="margin-top: 140px;">
+              @foreach($routes as $route)
                 <div class="service-cardq">
                     <img class="iconq " src="{{asset('assets/frontend/icons/transport.svg')}}" alt=" ">
-                    <h2>City Campus Route</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h2>{{$route->route_name}}</h2>
+                    <p>{{Str::limit($route->route_description, 88)}}</p>
                     <button class=" btnq btnq-secondary "><a href="{{asset('cityroute')}}">Bus ID</a> </button>
                 </div>
-                <div class="service-cardq">
-                    <img src="{{asset('assets/frontend/icons/transport.svg')}}" alt=" ">
-                    <h2>Uttara Route</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <button class=" btnq btnq-secondary "><a href="{{asset('cityroute')}}">Bus ID</a> </button>
-                </div>
-                <div class="service-cardq">
-                    <img src="{{asset('assets/frontend/icons/transport.svg')}}" alt=" ">
-                    <h2>Tongi College Gate Route</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <button class=" btnq btnq-secondary "><a href="{{asset('cityroute')}}">Bus ID</a> </button>
-                </div>
-                <div class="service-cardq">
-                    <img src="{{asset('assets/frontend/icons/transport.svg')}}" alt=" ">
-                    <h2>Others Route</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <button class=" btnq btnq-secondary "><a href="{{asset('cityroute')}}">Bus ID</a> </button>
-                </div>
+              @endforeach
             </div>
         </div>
     </section>
