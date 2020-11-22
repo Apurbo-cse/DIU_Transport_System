@@ -68,7 +68,6 @@ class HomeController extends Controller
         return view('frontend.details', $data);
     }
     public function service(){
-        $data['sliders'] = Slider::where('status', 'active')->get();
         $data['services'] = Service::where('status', 'active')->get();
         return view('frontend.service', $data);
     }

@@ -19,58 +19,22 @@
             <h1 class="ser-head">Our Service</h1>
             <div class="slider-ser">
                 <div class="ser-silder">
-                    <div class="ser-card ">
-                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
-                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
-                        </div>
-                        <hr>
-                        <div>
-                            <h2 class="ser-text-center">AC Bus</h2>
-                            <div class="price ser-text-center ">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
+                    @foreach($services as $service)
+                        <div class="ser-card ">
+                            <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                                <img src="{{asset($service->image)}}" alt=" ">
                             </div>
-                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
-                        </div>
-                    </div>
-                    <div class="ser-card ">
-                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
-                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
-                        </div>
-                        <hr>
-                        <div>
-                            <h2 class="ser-text-center">Non AC Bus</h2>
-                            <div class="price ser-text-center ">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
+                            <hr>
+                            <div>
+                                <h2 class="ser-text-center">{{$service->title}}</h2>
+                                <p class="ser-text-center">{{$service->sub_title}}</p>
+                                <div class="price ser-text-center ">
+                                    {{Str::limit($service->description, 90)}}
+                                </div>
+                                <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
                             </div>
-                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
                         </div>
-                    </div>
-                    <div class="ser-card ">
-                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
-                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
-                        </div>
-                        <hr>
-                        <div>
-                            <h2 class="ser-text-center">Car</h2>
-                            <div class="price ser-text-center ">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
-                            </div>
-                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
-                        </div>
-                    </div>
-                    <div class="ser-card ">
-                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
-                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
-                        </div>
-                        <hr>
-                        <div>
-                            <h2 class="ser-text-center">Abulance</h2>
-                            <div class="price ser-text-center ">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
-                            </div>
-                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <!-- Pagination -->
                 <nav aria-label="Page navigation example">
