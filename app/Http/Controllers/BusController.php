@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bus;
+use App\Route;
 use Illuminate\Http\Request;
 
 class BusController extends Controller
@@ -14,7 +15,9 @@ class BusController extends Controller
      */
     public function index()
     {
-        //
+        $data['buses'] = Bus::orderBy('created_at', 'DESC')->paginate(20);
+        $data['serial'] = 1;
+        return view('admin.bus.index', $data);
     }
 
     /**
@@ -24,7 +27,8 @@ class BusController extends Controller
      */
     public function create()
     {
-        //
+        $data['routes'] = Route::orderBy('route_name')->get();
+        return view('admin.bus.create', $data);
     }
 
     /**
@@ -35,7 +39,24 @@ class BusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'route_id' => 'required',
+            'name' => 'required|unique:buses,name',
+            'total_seats' => 'required|min:2|numeric',
+            'bus_code' => 'required',
+            'status' => 'required',
+        ]);
+
+        $data['route_id'] = $request->route_id;
+        $data['name'] = $request->name;
+        $data['total_seats'] = $request->total_seats;
+        $data['bus_code'] = $request->bus_code;
+        $data['status'] = $request->status;
+
+
+        Bus::create($data);
+        session()->flash('success', 'Bus Create Successfully');
+        return redirect()->route('bus.index');
     }
 
     /**
@@ -44,7 +65,7 @@ class BusController extends Controller
      * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function show(Bus $bus)
+    public function show(Bus $bu)
     {
         //
     }
@@ -55,9 +76,11 @@ class BusController extends Controller
      * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bus $bus)
+    public function edit(Bus $bu)
     {
-        //
+        $data['routes'] = Route::orderBy('route_name')->get();
+        $data['bus']=$bu;
+        return view('admin.bus.edit', $data);
     }
 
     /**
@@ -67,9 +90,26 @@ class BusController extends Controller
      * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bus $bus)
+    public function update(Request $request, Bus $bu)
     {
-        //
+        $request->validate([
+            'route_id' => 'required',
+            'name' => "required|unique:buses,name,$bu->id",
+            'total_seats' => 'required|min:2|numeric',
+            'bus_code' => 'required',
+            'status' => 'required',
+        ]);
+
+        $data['route_id'] = $request->route_id;
+        $data['name'] = $request->name;
+        $data['total_seats'] = $request->total_seats;
+        $data['bus_code'] = $request->bus_code;
+        $data['status'] = $request->status;
+
+
+        $bu->update($data);
+        session()->flash('success', 'Bus Update Successfully');
+        return redirect()->route('bus.index');
     }
 
     /**
@@ -78,8 +118,10 @@ class BusController extends Controller
      * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bus $bus)
+    public function destroy(Bus $bu)
     {
-        //
+        $bu->delete();
+        session()->flash('success', 'Bus Deleted Successfully');
+        return redirect()->route('bus.index');
     }
 }
