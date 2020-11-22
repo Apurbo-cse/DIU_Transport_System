@@ -8,7 +8,7 @@
             <div class="dropdown">
                 <a class="dropbtn" style="color: white;">Facilities</a>
                 <div class="dropdown-content">
-                    <a href="{{asset('maps')}}">Locate Bus</a>
+                    <a href="{{route('maps')}}">Locate Bus</a>
                     <a href="#">Facial Recognition</a>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="dropdown">
                 <a class="dropbtn" style="color: white;"><i class="fa fa-user" aria-hidden="true"></i></a>
                 <div class="dropdown-content">
-                    <a href="user_profile.html">Profile</a>
+                    <a href="{{route('profile')}}">Profile</a>
                     <a href="ticket_list.html">Ticket List</a>
                     <a href="ticket_list">Sign Out</a>
                 </div>
