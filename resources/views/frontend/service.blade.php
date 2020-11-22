@@ -1,43 +1,106 @@
 @extends('layouts.frontend.master')
 @section('title', 'Service')
-@section('servics_css')
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/service-info.css')}}" />
+@section('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/sup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/co-sup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/teams.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/drop.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/locate.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/ak.css')}}">
 @endsection
 
 @section('content')
-    <div id="demo" class="carousel slide" data-ride="carousel">
-        @include('layouts.frontend._slider')
-    </div>
-    <br><br>
-
-    <div>
-        <div class="ser">
-
-            <div class="scard">
-               @foreach($services as $service)
-                    <div class="img">
-                        <img src="{{asset($service->image)}}" alt="">
-                    </div>
-
-                    <div class="top-write">
-                        <div class="name">{{$service->title}}</div>
-                        <p>{{$service->sub_title}}</p>
-                    </div>
-
-                    <div class="bottom-write">
-                        <div class="write">
-                            {{Str::limit($service->description, 170)}}
+    <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
+    <div class="service">
+        <div class="containerser"><br><br>
+            <h1 class="ser-head">Our Service</h1>
+            <div class="slider-ser">
+                <div class="ser-silder">
+                    <div class="ser-card ">
+                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
                         </div>
-
-                        <div class="serbtn">
-                            <a href="{{route('transportinfo')}}">Contact</a>
+                        <hr>
+                        <div>
+                            <h2 class="ser-text-center">AC Bus</h2>
+                            <div class="price ser-text-center ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
+                            </div>
+                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
                         </div>
                     </div>
-               @endforeach
+                    <div class="ser-card ">
+                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
+                        </div>
+                        <hr>
+                        <div>
+                            <h2 class="ser-text-center">Non AC Bus</h2>
+                            <div class="price ser-text-center ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
+                            </div>
+                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
+                        </div>
+                    </div>
+                    <div class="ser-card ">
+                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
+                        </div>
+                        <hr>
+                        <div>
+                            <h2 class="ser-text-center">Car</h2>
+                            <div class="price ser-text-center ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
+                            </div>
+                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
+                        </div>
+                    </div>
+                    <div class="ser-card ">
+                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                            <img src="{{asset('assets/frontend/images/diubus.jpg')}}" alt=" ">
+                        </div>
+                        <hr>
+                        <div>
+                            <h2 class="ser-text-center">Abulance</h2>
+                            <div class="price ser-text-center ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam animi labore vel distinctio..
+                            </div>
+                            <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-circle justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link ser-pres-btn" style="border-radius: 20px;" aria-label="Previous">
+                                <span  aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="page-item">
+                            <a class="page-link ser-nexts-btn" style="border-radius: 20px;" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- Pagination End -->
+                <br>
+                <br><br>
             </div>
+        </div>
 
-        </div><br><br>
-        <br>
     </div>
-    <br><br><br>
+@endsection
+
+@section('script')
+    <script src="{{asset('assets/frontend/js/window.js')}}"></script>
+    <script type="text/javascript " src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript " src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript " src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{{asset('assets/frontend/js/ak.js')}}"></script>
 @endsection

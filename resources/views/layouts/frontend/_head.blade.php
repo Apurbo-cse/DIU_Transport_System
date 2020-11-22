@@ -21,9 +21,6 @@
 <link href="{{asset('assets/frontend/style/gallery.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('assets/frontend/style/about.css')}}">
 
-
-
-@yield('servics_css')
 <style>
     .dropbtn {
         padding: 16px;
