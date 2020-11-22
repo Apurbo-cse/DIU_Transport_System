@@ -26,7 +26,16 @@
         <li><a href="{{route('gallery')}}">Gallery</a></li>
         <li><a href="{{route('blog')}}">Blog</a></li>
         <li><a href="{{route('contact')}}">Contact</a></li>
-        <li><a href="user.html">Account</a></li>
+        <li>
+            <div class="dropdown">
+                <a class="dropbtn" style="color: white;"><i class="fa fa-user" aria-hidden="true"></i></a>
+                <div class="dropdown-content">
+                    <a href="user_profile.html">Profile</a>
+                    <a href="ticket_list.html">Ticket List</a>
+                    <a href="ticket_list">Sign Out</a>
+                </div>
+            </div>
+        </li>
     </ul>
 
 

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/style/teams.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/drop.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/locate.css')}}">
+
 @endsection
 
 @section('content')
