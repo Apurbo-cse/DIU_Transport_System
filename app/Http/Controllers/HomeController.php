@@ -84,7 +84,6 @@ class HomeController extends Controller
     }
     public function cityroute(){
         return view('frontend.cityroute');
-
     }
     public function profile(){
         return view('frontend.profile');

@@ -50,5 +50,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
     Route::resource('service', 'ServiceController');
     Route::resource('bus_category', 'BusCategoryController');
     Route::resource('route', 'RouteController');
+    Route::resource('bus', 'BusController');
     Route::resource('stuff', 'StuffController');
 });
