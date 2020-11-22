@@ -19,50 +19,15 @@
         <div class="containerq ">
             <h1 class="section-headingq ">City Campus Route</h1>
             <div class="card-wrapperq flexq ">
-                <div class="service-cardq ">
-                    <h2>Suryamukhi 1</h2>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Track</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="tel:+8801732955937 ">Call</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice On</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice Off</a> </button>
-                </div>
-                <div class="service-cardq ">
-                    <h2>Rojonigondha 1</h2>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Track</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="tel:+8801732955937 ">Call</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice On</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice Off</a> </button>
-                </div>
-                <div class="service-cardq ">
-                    <h2>Bus 21</h2>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Track</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="tel:+8801732955937 ">Call</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice On</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice Off</a> </button>
-                </div>
-                <div class="service-cardq ">
-                    <h2>Bus 21</h2>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Track</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="tel:+8801732955937 ">Call</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice On</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice Off</a> </button>
-                </div>
-                <div class="service-cardq ">
-                    <h2>Bus 21</h2>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Track</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="tel:+8801732955937 ">Call</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice On</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice Off</a> </button>
-                </div>
-                <div class="service-cardq ">
-                    <h2>Bus 21</h2>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Track</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="tel:+8801732955937 ">Call</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice On</a> </button>
-                    <button class=" btnq btnq-secondary "><a href="sms:+8801732955937 ">Voice Off</a> </button>
-                </div>
-
-
+                @foreach($buses as $bus)
+                    <div class="service-cardq ">
+                        <h2>{{$bus->name}}</h2>
+                        <button class=" btnq btnq-secondary "><a href="sms:+8801317074745">Track</a> </button>
+                        <button class=" btnq btnq-secondary "><a href="tel:+8801317074745">Call</a> </button>
+                        <button class=" btnq btnq-secondary "><a href="sms:+8801317074745">Voice On</a> </button>
+                        <button class=" btnq btnq-secondary "><a href="sms:+8801317074745">Voice Off</a> </button>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

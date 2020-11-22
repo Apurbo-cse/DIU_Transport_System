@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bus;
 use App\Bus_Category;
 use App\Gallery;
 use App\Post;
@@ -83,7 +84,8 @@ class HomeController extends Controller
 
     }
     public function cityroute(){
-        return view('frontend.cityroute');
+        $data['buses']=Bus::where('status', 'active')->orderBy('id', 'asc')->limit(6)->get();
+        return view('frontend.cityroute', $data);
     }
     public function profile(){
         return view('frontend.profile');
