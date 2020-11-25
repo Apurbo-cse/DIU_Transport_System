@@ -16,17 +16,17 @@ use Illuminate\Support\Facades\Route;
 // *******Frontend Routes*******//
 Route::group([], function (){
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('schedule','HomeController@schedule')->name('schedule');
-    Route::get('gallery','HomeController@gallery')->name('gallery');
-    Route::get('contact','HomeController@contact')->name('contact');
-    Route::get('blog','HomeController@blog')->name('blog');
-    Route::get('post/{id}/details','HomeController@details')->name('post.details');
-    Route::get('service','HomeController@service')->name('service');
-    Route::get('transportinfo','HomeController@transportinfo')->name('transportinfo');
-    Route::get('maps','HomeController@locate')->name('maps');
-    Route::get('cityroute','HomeController@cityroute')->name('cityroute');
-    Route::get('profile','HomeController@profile')->name('profile');
-    Route::get('developers','HomeController@developers')->name('developers');
+    Route::get('schedule','ScheduleController@schedule')->name('schedule');
+    Route::get('service','ServiceController@service')->name('service');
+    Route::get('transportinfo','ServiceController@transportinfo')->name('transportinfo');
+    Route::get('maps','FacilitiesController@locate')->name('maps');
+    Route::get('cityroute','FacilitiesController@cityroute')->name('cityroute');
+    Route::get('developers','InfoController@developers')->name('developers');
+    Route::get('gallery','GalleryController@gallery')->name('gallery');
+    Route::get('blog','BlogController@blog')->name('blog');
+    Route::get('post/{id}/details','BlogController@details')->name('post.details');
+    Route::get('contact','ContactController@contact')->name('contact');
+    Route::get('profile','UserController@profile')->name('profile');
 });
 
 Auth::routes([

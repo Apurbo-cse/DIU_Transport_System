@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Bus;
-use App\Bus_Category;
-use App\Gallery;
+
 use App\Post;
-use App\Route;
-use App\Service;
 use App\Slider;
 use App\Tag;
 use App\Video;
@@ -41,57 +37,4 @@ class HomeController extends Controller
         return view('frontend.home', $data);
     }
 
-    public function schedule(){
-        return view('frontend.schedule');
-    }
-
-    public function gallery(){
-        $data['galleries'] = Gallery::where('status', 'active')->get();
-        return view('frontend.gallery', $data);
-    }
-    public function contact(){
-        $data['sliders'] = Slider::where('status', 'active')->get();
-        return view('frontend.contact', $data);
-    }
-    public function blog(){
-        $data['latest_news']=Post::where('status', 'active')->orderBy('id', 'desc')->limit(3)->get();
-        $data['posts']=Post::where('status', 'active')->orderBy('id', 'desc')->paginate(5);
-        $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
-        return view('frontend.blog', $data);
-    }
-    public function details($id){
-        $data['latest_news']=Post::where('status', 'active')->orderBy('id', 'desc')->limit(3)->get();
-        $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
-        $post=Post::findOrFail($id);
-        $post->increment('view_count');
-        $data['post']=$post;
-        return view('frontend.details', $data);
-    }
-    public function service(){
-        $data['services'] = Service::where('status', 'active')->get();
-        return view('frontend.service', $data);
-    }
-
-    public function transportinfo(){
-
-        return view('frontend.transportinfo');
-
-    }
-    public function locate(){
-        $data['routes']=Route::where('status', 'active')->orderBy('id', 'asc')->limit(4)->get();
-        return view('frontend.maps', $data);
-
-    }
-    public function cityroute(){
-        $data['buses']=Bus::where('status', 'active')->orderBy('id', 'asc')->limit(6)->get();
-        return view('frontend.cityroute', $data);
-    }
-    public function profile(){
-        return view('frontend.profile');
-
-    }
-    public function developers(){
-        return view('frontend.developers');
-
-    }
 }
