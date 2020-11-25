@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Service;
+use App\Http\Controllers\Controller;
+use App\Video;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $data['services'] = Service::orderBy('created_at', 'DESC')->paginate(20);
+        $data['videos'] = Video::orderBy('created_at', 'DESC')->paginate(20);
         $data['serial'] = 1;
-        return view('admin.service.index', $data);
+        return view('admin.video.index', $data);
     }
 
     /**
@@ -26,7 +28,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        return view('admin.video.create');
     }
 
     /**
@@ -39,8 +41,8 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'sub_title'=>'required',
             'description'=>'required',
+            'link'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required',
 
@@ -48,7 +50,7 @@ class ServiceController extends Controller
 
         if ($request->hasFile('image')){
             $file = $request->file('image');
-            $path ='images/services';
+            $path ='images/videos';
             $file_name = time() . $file->getClientOriginalName();
             $file->move($path, $file_name);
             $data['image']= $path.'/'. $file_name;
@@ -56,22 +58,23 @@ class ServiceController extends Controller
         }
 
         $data['title'] = $request->title;
-        $data['sub_title'] = $request->sub_title;
         $data['description'] = $request->description;
+        $data['link'] = $request->link;
+        $data['published_at'] = Carbon::now();
         $data['status'] = $request->status;
 
-        Service::create($data);
-        session()->flash('success', 'Service Create Successfully');
-        return redirect()->route('service.index');
+        Video::create($data);
+        session()->flash('success', 'Video Create Successfully');
+        return redirect()->route('video.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Video $video)
     {
         //
     }
@@ -79,28 +82,28 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Video $video)
     {
-        $data['service']=$service;
-        return view('admin.service.edit', $data);
+        $data['video']=$video;
+        return view('admin.video.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Video $video)
     {
         $request->validate([
             'title'=>'required',
-            'sub_title'=>'required',
             'description'=>'required',
+            'link'=>'required',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required',
 
@@ -108,43 +111,44 @@ class ServiceController extends Controller
 
         if ($request->hasFile('image')){
             $file = $request->file('image');
-            $path ='images/services';
+            $path ='images/videos';
             $file_name = time() . $file->getClientOriginalName();
             $file->move($path, $file_name);
             $data['image']= $path.'/'. $file_name;
 
-            if (file_exists($service->image)){
-                unlink($service->image);
+            if (file_exists($video->image)){
+                unlink($video->image);
             }
         }
 
         $data['title'] = $request->title;
-        $data['sub_title'] = $request->sub_title;
         $data['description'] = $request->description;
+        $data['link'] = $request->link;
         $data['status'] = $request->status;
 
-        $service->update($data);
-        session()->flash('success', 'Service Update Successfully');
-        return redirect()->route('service.index');
+        $video->update($data);
+        session()->flash('success', 'Video Update Successfully');
+        return redirect()->route('video.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Video $video)
     {
-        if($service){
-            if(file_exists(($service->image))){
-                unlink($service->image);
+        if($video){
+            if(file_exists(($video->image))){
+                unlink($video->image);
             }
 
-            $service->delete();
-            session()->flash('success', 'Service deleted successfully');
+            $video->delete();
+            session()->flash('success', 'Video deleted successfully');
         }
 
-        return redirect()->route('service.index');
+        return redirect()->route('video.index');
     }
+
 }

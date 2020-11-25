@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Bus_Category;
+use App\Http\Controllers\Controller;
 use App\Route;
 use App\Stuff;
 use Illuminate\Http\Request;
