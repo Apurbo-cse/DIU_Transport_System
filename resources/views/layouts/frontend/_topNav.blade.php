@@ -31,8 +31,8 @@
                 <a class="dropbtn" style="color: white;"><i class="fa fa-user" aria-hidden="true"></i></a>
                 <div class="dropdown-content">
                     <a href="{{route('profile')}}">Profile</a>
-                    <a href="ticket_list.html">Ticket List</a>
-                    <a href="ticket_list">Sign Out</a>
+                    <a href="{{route('ticket_list')}}">Ticket List</a>
+                    <a href="#">Sign Out</a>
                 </div>
             </div>
         </li>

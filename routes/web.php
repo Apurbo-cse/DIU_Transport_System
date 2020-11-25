@@ -27,6 +27,7 @@ Route::group([], function (){
     Route::get('post/{id}/details','BlogController@details')->name('post.details');
     Route::get('contact','ContactController@contact')->name('contact');
     Route::get('profile','UserController@profile')->name('profile');
+    Route::get('ticket_list','UserController@ticketlist')->name('ticket_list');
 });
 
 Auth::routes([
