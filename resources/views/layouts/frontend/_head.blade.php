@@ -17,10 +17,6 @@
 <link href="{{asset('assets/frontend/style/main.css')}}" rel="stylesheet">
 <link href="{{asset('assets/frontend/style/nav.css')}}" rel="stylesheet">
 <link href="{{asset('assets/frontend/style/responsive.css')}}" rel="stylesheet">
-<link href="{{asset('assets/frontend/style/user.css')}}" rel="stylesheet">
-<link href="{{asset('assets/frontend/style/gallery.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('assets/frontend/style/about.css')}}">
-
 <style>
     .dropbtn {
         padding: 16px;

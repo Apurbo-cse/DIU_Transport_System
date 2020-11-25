@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="bokbtn"><a href="available-bus.html" style="color: #fff;">Check availability</a> </button>
+                                <button class="bokbtn"><a href="{{route('available_bus')}}" style="color: #fff;">Check availability</a> </button>
 
                             </form>
                         </div>
