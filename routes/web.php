@@ -28,6 +28,7 @@ Route::group([], function (){
     Route::get('contact','ContactController@contact')->name('contact');
     Route::get('profile','UserController@profile')->name('profile');
     Route::get('ticket_list','UserController@ticketlist')->name('ticket_list');
+    Route::get('online_ticket','TicketController@ticket')->name('online_ticket');
 });
 
 Auth::routes([

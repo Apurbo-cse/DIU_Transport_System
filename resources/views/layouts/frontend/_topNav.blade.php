@@ -3,7 +3,7 @@
         <li><a href="{{route('home')}}" >Home</a></li>
         <li><a href="{{route('schedule')}}">Schedule</a></li>
         <li><a href="{{route('service')}}">Service</a></li>
-        <li><a href="buyticket.html">Buy Ticket</a></li>
+        <li><a href="{{route('online_ticket')}}">Online Ticket</a></li>
         <li>
             <div class="dropdown">
                 <a class="dropbtn" style="color: white;">Facilities</a>
