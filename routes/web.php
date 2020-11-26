@@ -19,15 +19,26 @@ Route::group([], function (){
     Route::get('schedule','ScheduleController@schedule')->name('schedule');
     Route::get('service','ServiceController@service')->name('service');
     Route::get('transportinfo','ServiceController@transportinfo')->name('transportinfo');
+
+    //********* Bus Traking ******//
     Route::get('maps','FacilitiesController@locate')->name('maps');
     Route::get('cityroute','FacilitiesController@cityroute')->name('cityroute');
+
+
+
     Route::get('developers','InfoController@developers')->name('developers');
     Route::get('gallery','GalleryController@gallery')->name('gallery');
     Route::get('blog','BlogController@blog')->name('blog');
     Route::get('post/{id}/details','BlogController@details')->name('post.details');
     Route::get('contact','ContactController@contact')->name('contact');
+
+    //********** User  *********//
+
     Route::get('profile','UserController@profile')->name('profile');
     Route::get('ticket_list','UserController@ticketlist')->name('ticket_list');
+
+    //********Online Ticket*******//
+
     Route::get('online_ticket','TicketController@ticket')->name('online_ticket');
     Route::get('available_bus','TicketController@availablebus')->name('available_bus');
 });
