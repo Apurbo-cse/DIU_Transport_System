@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Bus;
+use App\Bus_Category;
 use App\Http\Controllers\Controller;
 use App\Route;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class BusController extends Controller
      */
     public function create()
     {
+        $data['bus_categories'] = Bus_Category::orderBy('name')->get();
         $data['routes'] = Route::orderBy('route_name')->get();
         return view('admin.bus.create', $data);
     }
@@ -41,6 +43,7 @@ class BusController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'category_id' => 'required',
             'route_id' => 'required',
             'name' => 'required|unique:buses,name',
             'tracking_number' => 'required|min:11|numeric',
@@ -49,6 +52,7 @@ class BusController extends Controller
             'status' => 'required',
         ]);
 
+        $data['category_id'] = $request->category_id;
         $data['route_id'] = $request->route_id;
         $data['name'] = $request->name;
         $data['tracking_number'] = $request->tracking_number;
@@ -81,6 +85,7 @@ class BusController extends Controller
      */
     public function edit(Bus $bu)
     {
+        $data['bus_categories'] = Bus_Category::orderBy('name')->get();
         $data['routes'] = Route::orderBy('route_name')->get();
         $data['bus']=$bu;
         return view('admin.bus.edit', $data);
@@ -96,6 +101,7 @@ class BusController extends Controller
     public function update(Request $request, Bus $bu)
     {
         $request->validate([
+            'category_id' => 'required',
             'route_id' => 'required',
             'name' => "required|unique:buses,name,$bu->id",
             'tracking_number' => 'required|min:11|numeric',
@@ -104,6 +110,8 @@ class BusController extends Controller
             'status' => 'required',
         ]);
 
+
+        $data['category_id'] = $request->category_id;
         $data['route_id'] = $request->route_id;
         $data['name'] = $request->name;
         $data['tracking_number'] = $request->tracking_number;
@@ -115,6 +123,7 @@ class BusController extends Controller
         $bu->update($data);
         session()->flash('success', 'Bus Update Successfully');
         return redirect()->route('bus.index');
+
     }
 
     /**

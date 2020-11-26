@@ -15,4 +15,9 @@ class Bus_Category extends Model
     {
         return $this->hasMany(Stuff::class);
     }
+
+    public function bus()
+    {
+        return $this->hasMany(Bus::class);
+    }
 }

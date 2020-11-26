@@ -36,6 +36,7 @@
                         <thead>
                         <tr>
                             <th class="text-center" style="width: 10px">SL#</th>
+                            <th class="text-center" >Bus Category</th>
                             <th class="text-center" >Route Name</th>
                             <th class="text-center" >Bus Name</th>
                             <th class="text-center" >Tracking Phone Number</th>
@@ -51,6 +52,7 @@
                         @foreach($buses as $bus)
                             <tr>
                                 <td>{{$serial++ }}</td>
+                                <td>{{$bus->category->name}}</td>
                                 <td>{{$bus->route->route_name}}</td>
                                 <td>{{$bus->name}}</td>
                                 <td>{{$bus->tracking_number}}</td>
