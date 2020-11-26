@@ -20,11 +20,11 @@
             <div class="card-wrapperq flexq ">
                 @foreach($buses as $bus)
                     <div class="service-cardq ">
-                        <h2>{{$bus->name}}</h2>
-                        <button class=" btnq btnq-secondary "><a href="sms:+8801317074745">Track</a> </button>
-                        <button class=" btnq btnq-secondary "><a href="tel:+8801317074745">Call</a> </button>
-                        <button class=" btnq btnq-secondary "><a href="sms:+8801317074745">Voice On</a> </button>
-                        <button class=" btnq btnq-secondary "><a href="sms:+8801317074745">Voice Off</a> </button>
+                      <h2>{{$bus->name}}</h2>
+                        <button class=" btnq btnq-secondary "><a href="sms:+88{{$bus->tracking_number}}">Track</a> </button>
+                        <button class=" btnq btnq-secondary "><a href="tel:+88{{$bus->tracking_number}}">Call</a> </button>
+                        <button class=" btnq btnq-secondary "><a href="sms:+88{{$bus->tracking_number}}">Voice On</a> </button>
+                        <button class=" btnq btnq-secondary "><a href="sms:+88{{$bus->tracking_number}}">Voice Off</a> </button>
                     </div>
                 @endforeach
             </div>
