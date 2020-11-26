@@ -34,18 +34,28 @@
                     <div class="col-md-4 col-md-pull-7">
                         <div class="booking-form">
                             <form>
+
                                 <div class="bokform-group">
-                                    <span class="bokform-label"> Select Your Route</span>
-                                    <select name="route_id" id="route_id" class="form-control" required>
-                                        <option value="" style="display: none" selected >Select Route --</option>
-                                        @foreach($routes as $route)
-                                            <option @if(old('route_id') == $route->id) selected @endif value="{{ $route->id }}"> {{ $route->route_name }} </option>
+                                    <span class="bokform-label">Destination From</span>
+                                    <select name="destination_from" id="destination_from" class="form-control" required>
+                                        <option value="" style="display: none" selected>Select Route</option>
+                                        @foreach($routes as $from)
+                                            <option @if(old('destination_from') == $from->id) selected @endif value="{{ $from->id }}">{{$from->destination_from}}</option>
                                         @endforeach
-                                        <option value="">Daffodil International University</option>
                                     </select>
-                                    @error('route_id')
+                                    @error('destination_from')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
+                                    <span class="bokselect-arrow"></span>
+                                </div>
+                                <div class="bokform-group">
+                                    <span class="bokform-label">Destination To</span>
+                                    <select name="destination_to" id="destination_to"  class="form-control" required>
+                                        <option value="" style="display: none" selected >Select Route</option>
+                                        @foreach($routes as $to)
+                                            <option @if(old('destination_to') == $to->id) selected @endif value="{{ $to->id }}">{{$to->destination_to}}</option>
+                                        @endforeach
+                                    </select>
                                     <span class="bokselect-arrow"></span>
                                 </div>
 
