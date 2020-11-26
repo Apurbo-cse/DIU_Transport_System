@@ -20,25 +20,26 @@
     <body style="background-color:rgb(221, 221, 221);">
     <div id="supervisor">
         <div class="supervisor cons">
-
-            <div class="col-left">
-                <div class="supervisor-img">
-                    <img src="{{asset('assets/frontend/images/team/mijanur.jpg')}}" alt="img">
+             @foreach($users as $user)
+                <div class="col-left">
+                    <div class="supervisor-img">
+                        <img src="{{asset($user->image)}}" alt="img">
+                    </div>
                 </div>
-            </div>
-            <div class="col-right">
-                <h1 class="sup-title">Profi<span>le</span></h1>
-                <h2>
-                    Mizanur Rahaman Raihan
-                </h2>
-                <br>
-                <div>
-                    <p class="pro-type">ID : 171-X-19XX</p>
-                    <p class="pro-type">Department of CSE</p>
-                    <p class="pro-type">Email : mizanurx-19xx@diu.edu.bd</p>
-                    <p class="pro-type">Daffodil International University</p>
+                <div class="col-right">
+                    <h1 class="sup-title">Profi<span>le</span></h1>
+                    <h2>
+                         {{$user->name}}
+                    </h2>
+                    <br>
+                    <div>
+                        <p class="pro-type">ID : {{$user->user_id}}</p>
+                        <p class="pro-type">Department of {{$user->department}}</p>
+                        <p class="pro-type">Email : {{$user->email}}</p>
+                        <p class="pro-type">Daffodil International University</p>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
     </body>
