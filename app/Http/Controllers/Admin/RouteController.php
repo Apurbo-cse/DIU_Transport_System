@@ -13,8 +13,6 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function index()
     {
         $data['routes'] = Route::orderBy('created_at', 'DESC')->paginate(20);
@@ -42,11 +40,19 @@ class RouteController extends Controller
     {
         $request->validate([
             'route_name' => 'required|unique:routes,route_name',
+            'destination_from' => 'required|unique:routes,destination_from',
+            'destination_to' => 'required|unique:routes,destination_to',
+            'depart_time' => 'required',
+            'fare' => 'required',
             'status' => 'required',
 
         ]);
 
         $data['route_name'] = $request->route_name;
+        $data['destination_from'] = $request->destination_from;
+        $data['destination_to'] = $request->destination_to;
+        $data['depart_time'] = $request->depart_time;
+        $data['fare'] = $request->fare;
         $data['route_description'] = $request->route_description;
         $data['status'] = $request->status;
 
@@ -91,11 +97,21 @@ class RouteController extends Controller
     {
         $request->validate([
             'route_name' => "required|unique:routes,route_name,$route->id",
+            'destination_from' => "required|unique:routes,destination_from,$route->id",
+            'destination_to' => "required|unique:routes,destination_to,$route->id",
+            'fare' => 'required',
             'status' => 'required',
 
         ]);
 
+        if($request->depart_time != null){
+            $data['depart_time'] = $request->depart_time;
+        }
+
         $data['route_name'] = $request->route_name;
+        $data['destination_from'] = $request->destination_from;
+        $data['destination_to'] = $request->destination_to;
+        $data['fare'] = $request->fare;
         $data['route_description'] = $request->route_description;
         $data['status'] = $request->status;
 
@@ -116,5 +132,4 @@ class RouteController extends Controller
         session()->flash('success', 'Route Deleted Successfully');
         return redirect()->route('route.index');
     }
-
 }

@@ -16,6 +16,10 @@ class CreateRoutesTable extends Migration
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
             $table->string('route_name')->unique();
+            $table->string('destination_from')->unique();
+            $table->string('destination_to')->unique();
+            $table->time('depart_time');
+            $table->integer('fare');
             $table->text('route_description')->nullable();
             $table->enum('status', ['active', 'inactive']);
             $table->timestamps();

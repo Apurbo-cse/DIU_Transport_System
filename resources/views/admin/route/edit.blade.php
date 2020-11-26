@@ -32,6 +32,42 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-md-2 control-label">Destination From Name</label>
+                            <div class="col-md-10">
+                                <input value="{{$route->destination_from}}" name="destination_from" type="text" id="destination_from" class="form-control" placeholder="Destination From Name">
+                                @error('destination_from')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Destination To Name</label>
+                            <div class="col-md-10">
+                                <input value="{{$route->destination_to}}" name="destination_to" type="text" id="destination_to" class="form-control" placeholder="Destination To Name">
+                                @error('destination_to')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Depart Time</label>
+                            <div class="col-md-10">
+                                <input value="{{$route->depart_time}}" type="time"  min="07:00" max="19:00" name="depart_time" id="depart_time" class="form-control">
+                                @error('depart_time')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Fare</label>
+                            <div class="col-md-10">
+                                <input value="{{$route->fare}}" name="fare" type="number" min="10" id="fare" class="form-control" placeholder="Fare">
+                                @error('fare')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-2 control-label"> Description</label>
                             <div class="col-md-10">
                                 <textarea name="route_description" class="form-control" rows="5" placeholder="Route Description">{{$route->route_description}}</textarea>

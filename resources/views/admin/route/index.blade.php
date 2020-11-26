@@ -37,6 +37,10 @@
                         <tr>
                             <th class="text-center" style="width: 10px">SL#</th>
                             <th class="text-center" >Name</th>
+                            <th class="text-center" >Destination From Name</th>
+                            <th class="text-center" >Destination To Name</th>
+                            <th class="text-center" >Depart Time</th>
+                            <th class="text-center" >Fare</th>
                             <th class="text-center " >Description</th>
                             <th class="text-center " >Status</th>
                             <th class="text-center" style="width: 12%">Actions</th>
@@ -49,6 +53,10 @@
                             <tr>
                                 <td>{{$serial++ }}</td>
                                 <td>{{$route->route_name}}</td>
+                                <td>{{$route->destination_from}}</td>
+                                <td>{{$route->destination_to}}</td>
+                                <td>{{$route->depart_time->format('H:i:s')}}</td>
+                                <td>{{$route->fare}}</td>
                                 <td>{{$route->route_description}}</td>
                                 <td>{{ucfirst($route->status)}}</td>
                                 <td class="d-flex">

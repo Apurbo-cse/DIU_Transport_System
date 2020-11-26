@@ -7,9 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Route extends Model
 {
     protected $fillable = [
-      'route_name',
-      'route_description',
-      'status',
+        'route_name',
+        'destination_from',
+        'destination_to',
+        'depart_time',
+        'fare',
+        'route_description',
+        'status',
+    ];
+
+    protected $dates = [
+        'depart_time',
     ];
 
     public function stuff()
@@ -20,4 +28,5 @@ class Route extends Model
     {
         return $this->hasMany(Bus::class);
     }
+
 }
