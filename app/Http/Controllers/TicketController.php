@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TicketController extends Controller
 {
    public function ticket(){
-       $data['routes']=Route::where('status', 'active')->orderBy('id', 'asc')->get();
+       $data['routes']=Route::where('status', 'active')->orderBy('route_name')->get();
        return view('frontend.online_ticket', $data);
    }
 

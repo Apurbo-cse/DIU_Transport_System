@@ -36,15 +36,16 @@
                             <form>
                                 <div class="bokform-group">
                                     <span class="bokform-label"> Select Your Route</span>
-                                    <select class="form-control" required>
-                                        <option value="">Select Route</option>
+                                    <select name="route_id" id="route_id" class="form-control" required>
+                                        <option value="" style="display: none" selected >Select Route --</option>
+                                        @foreach($routes as $route)
+                                            <option @if(old('route_id') == $route->id) selected @endif value="{{ $route->id }}"> {{ $route->route_name }} </option>
+                                        @endforeach
                                         <option value="">Daffodil International University</option>
-                                        <option value="">City Campus Route</option>
-                                        <option value="">Mirpur Route</option>
-                                        <option value="">Uttara Route</option>
-                                        <option value="">Tongi College Gate Route</option>
-                                        <option value="">Others Route</option>
                                     </select>
+                                    @error('route_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                     <span class="bokselect-arrow"></span>
                                 </div>
 
