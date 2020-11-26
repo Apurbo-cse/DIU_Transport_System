@@ -8,7 +8,7 @@
             <div class="dropdown">
                 <a class="dropbtn" style="color: white;">Facilities</a>
                 <div class="dropdown-content">
-                    <a href="{{route('maps')}}">Locate Bus</a>
+                    <a href="{{route('locate_bus')}}">Locate Bus</a>
                     <a href="#">Facial Recognition</a>
                 </div>
             </div>

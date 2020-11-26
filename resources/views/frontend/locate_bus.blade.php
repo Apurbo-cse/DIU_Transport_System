@@ -13,8 +13,7 @@
 
 @section('content')
 
-    <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
-    </div>
+  <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
     <section class="about-mealq" style=" font-family:  Raleway-regular ; ">
         <div class="containerq ">
             <h2 class="section-headingq"> Diu Transport Track</h2>
@@ -53,9 +52,6 @@
             </div>
         </div>
     </section>
-
-    <br>
-    <br>
 
 @endsection
 

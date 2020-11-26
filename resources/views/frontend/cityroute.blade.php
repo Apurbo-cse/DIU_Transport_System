@@ -12,8 +12,7 @@
 @endsection
 
 @section('content')
-    <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
-    </div>
+   <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
 
     <section class="our-servicesq " id="locate Route " style=" font-family: Raleway-regular ; ">
         <div class="containerq ">
@@ -34,6 +33,7 @@
 
     <br>
     <br>
+
 @endsection
 
 @section('script')

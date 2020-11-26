@@ -21,7 +21,7 @@ Route::group([], function (){
     Route::get('transportinfo','ServiceController@transportinfo')->name('transportinfo');
 
     //********* Bus Traking ******//
-    Route::get('maps','FacilitiesController@locate')->name('maps');
+    Route::get('locate_bus','FacilitiesController@locatebus')->name('locate_bus');
     Route::get('cityroute','FacilitiesController@cityroute')->name('cityroute');
 
 
