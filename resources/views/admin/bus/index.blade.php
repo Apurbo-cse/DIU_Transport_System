@@ -38,6 +38,7 @@
                             <th class="text-center" style="width: 10px">SL#</th>
                             <th class="text-center" >Route Name</th>
                             <th class="text-center" >Bus Name</th>
+                            <th class="text-center" >Tracking Phone Number</th>
                             <th class="text-center" >Total Seats</th>
                             <th class="text-center" >Bus Code</th>
                             <th class="text-center" >Status</th>
@@ -52,6 +53,7 @@
                                 <td>{{$serial++ }}</td>
                                 <td>{{$bus->route->route_name}}</td>
                                 <td>{{$bus->name}}</td>
+                                <td>{{$bus->tracking_number}}</td>
                                 <td>{{$bus->total_seats}}</td>
                                 <td>{{$bus->bus_code}}</td>
                                 <td>{{ucfirst($bus->status)}}</td>

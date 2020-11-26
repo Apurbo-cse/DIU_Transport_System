@@ -18,6 +18,7 @@ class CreateBusesTable extends Migration
             $table->unsignedBigInteger('route_id');
             $table->foreign('route_id')->references('id')->on('routes');
             $table->string('name');
+            $table->string('tracking_number');
             $table->string('total_seats');
             $table->string('bus_code');
             $table->enum('status', ['active', 'inactive']);

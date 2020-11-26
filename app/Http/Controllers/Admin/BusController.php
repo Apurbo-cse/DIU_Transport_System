@@ -43,6 +43,7 @@ class BusController extends Controller
         $request->validate([
             'route_id' => 'required',
             'name' => 'required|unique:buses,name',
+            'tracking_number' => 'required|min:11|numeric',
             'total_seats' => 'required|min:2|numeric',
             'bus_code' => 'required',
             'status' => 'required',
@@ -50,6 +51,7 @@ class BusController extends Controller
 
         $data['route_id'] = $request->route_id;
         $data['name'] = $request->name;
+        $data['tracking_number'] = $request->tracking_number;
         $data['total_seats'] = $request->total_seats;
         $data['bus_code'] = $request->bus_code;
         $data['status'] = $request->status;
@@ -96,6 +98,7 @@ class BusController extends Controller
         $request->validate([
             'route_id' => 'required',
             'name' => "required|unique:buses,name,$bu->id",
+            'tracking_number' => 'required|min:11|numeric',
             'total_seats' => 'required|min:2|numeric',
             'bus_code' => 'required',
             'status' => 'required',
@@ -103,6 +106,7 @@ class BusController extends Controller
 
         $data['route_id'] = $request->route_id;
         $data['name'] = $request->name;
+        $data['tracking_number'] = $request->tracking_number;
         $data['total_seats'] = $request->total_seats;
         $data['bus_code'] = $request->bus_code;
         $data['status'] = $request->status;

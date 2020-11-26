@@ -46,6 +46,15 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-md-2 control-label">Tracking Phone Number</label>
+                            <div class="col-md-10">
+                                <input value="{{$bus->tracking_number}}" name="tracking_number" type="tel" id="tracking_number" class="form-control" placeholder="013xxxxxxxx">
+                                @error('tracking_number')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-2 control-label">Total Seats</label>
                             <div class="col-md-10">
                                 <input min="10" value="{{$bus->total_seats}}" name="total_seats" type="number" id="total_seats" class="form-control" placeholder="Total Seats">
