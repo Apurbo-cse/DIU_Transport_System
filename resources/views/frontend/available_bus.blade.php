@@ -119,7 +119,7 @@
                                                 <a href="select-seat.html" style="color: #fff;">View Seats</a>
                                             </p>
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="track-bus-id.html" style="color: #fff;">Track Bus</a>
+                                                <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
                                             </p>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                                                 <a href="select-seat.html" style="color: #fff;">View Seats</a>
                                             </p>
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="track-bus-id.html" style="color: #fff;">Track Bus</a>
+                                                <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
                                             </p>
                                         </div>
                                     </div>

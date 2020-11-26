@@ -15,4 +15,10 @@ class TicketController extends Controller
     public function availablebus(){
         return view('frontend.available_bus');
     }
+
+    public function buslocation(){
+
+        return view('frontend.bus_location');
+
+    }
 }
