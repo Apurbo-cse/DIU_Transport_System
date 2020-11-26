@@ -83,6 +83,13 @@
                 </ul>
             </li>
             <li class="has_sub">
+                <a href="javascript:void(0);" class="waves-effect"><i class="ti-menu-alt"></i> <span> Bus Stoppages </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a href="{{route('stoppages.index')}}">Stoppages List</a></li>
+                    <li><a href="{{route('stoppages.create')}}">Create New Stoppages</a></li>
+                </ul>
+            </li>
+            <li class="has_sub">
                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i> <span> Stuff </span> <span class="pull-right"><i class="mdi mdi-plus"></i></span></a>
                 <ul class="list-unstyled">
                     <li><a href="{{route('stuff.index')}}">Stuff List</a></li>

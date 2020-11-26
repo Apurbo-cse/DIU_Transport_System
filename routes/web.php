@@ -67,4 +67,5 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'auth'], fu
     Route::resource('route', 'RouteController');
     Route::resource('bus', 'BusController');
     Route::resource('stuff', 'StuffController');
+    Route::resource('stoppages', 'StoppagesController');
 });

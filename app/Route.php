@@ -29,4 +29,9 @@ class Route extends Model
         return $this->hasMany(Bus::class);
     }
 
+    public function stoppages()
+    {
+        return $this->hasMany(Stoppages::class);
+    }
+
 }
