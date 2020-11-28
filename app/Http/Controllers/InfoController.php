@@ -16,4 +16,9 @@ class InfoController extends Controller
     public function developers(){
         return view('frontend.developers');
     }
+
+    public function trnasportinfo(){
+        $data['sliders'] = Slider::where('status', 'active')->get();
+        return view('frontend.trnasportinfo', $data);
+    }
 }

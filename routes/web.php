@@ -31,6 +31,7 @@ Route::group([], function (){
     //********* Information ******//
     Route::get('about','InfoController@about')->name('about');
     Route::get('developers','InfoController@developers')->name('developers');
+    Route::get('trnasportinfo','InfoController@trnasportinfo')->name('trnasportinfo');
 
 
     Route::get('gallery','GalleryController@gallery')->name('gallery');
