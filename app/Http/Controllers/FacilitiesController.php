@@ -13,8 +13,13 @@ class FacilitiesController extends Controller
         return view('frontend.locate_bus', $data);
 
     }
-    public function cityroute(){
-        $data['buses']=Bus::where('status', 'active')->orderBy('id', 'asc')->limit(5)->get();
+
+    public function cityroute($id){
+
+        $route = Route::where('id', $id)->first();
+        $data['bus_route'] = $route['route_name'];
+        $data['buses']=Bus::where('status', 'active')->where('route_id', $id)->orderBy('id', 'asc')->limit(5)->get();
         return view('frontend.cityroute', $data);
     }
+
 }

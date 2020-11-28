@@ -46,7 +46,7 @@
                     <img class="iconq " src="{{asset('assets/frontend/icons/transport.svg')}}" alt=" ">
                     <h2>{{$route->route_name}}</h2>
                     <p>{{Str::limit($route->route_description, 88)}}</p>
-                    <button class=" btnq btnq-secondary "><a href="{{asset('cityroute')}}">Bus ID</a> </button>
+                    <button class=" btnq btnq-secondary "><a href="{{route('cityroute', $route->id)}}">Bus ID</a> </button>
                 </div>
               @endforeach
             </div>

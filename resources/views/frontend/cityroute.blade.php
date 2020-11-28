@@ -16,7 +16,7 @@
 
     <section class="our-servicesq " id="locate Route " style=" font-family: Raleway-regular ; ">
         <div class="containerq ">
-            <h1 class="section-headingq ">City Campus Route</h1>
+            <h1 class="section-headingq ">{{$bus_route}}</h1>
             <div class="card-wrapperq flexq ">
                 @foreach($buses as $bus)
                     <div class="service-cardq ">
@@ -39,6 +39,4 @@
 @section('script')
     <script src="{{asset('assets/frontend/js/window.js')}}"></script>
 @endsection
-
-
 
