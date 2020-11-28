@@ -28,6 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        return view('frontend.login');
+    }
+
+    public function home()
+    {
         $data['featured_posts']=Post::where('status', 'active')->where('is_featured', 1)->limit(2)->paginate(2);
         $data['popular_posts']=Post::where('status', 'active')->orderBy('view_count', 'desc')->limit(3)->get();
         $data['latest_news']=Post::where('status', 'active')->orderBy('id', 'desc')->limit(3)->get();

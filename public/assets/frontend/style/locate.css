@@ -209,4 +209,7 @@ section.our-servicesq .service-cardq p {
     section.our-servicesq .card-wrapperq .service-cardq {
         margin-bottom: 8rem;
     }
+    .service-cardq {
+        margin-left: 17px;
+    }
 }

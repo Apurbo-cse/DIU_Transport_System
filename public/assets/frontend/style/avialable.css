@@ -85,6 +85,12 @@ h1 {
     }
 }
 
+@media (max-width:767px) {
+    .hidden-xy {
+        display: none!important
+    }
+}
+
 @media (min-width:1200px) {
     .hidden-lg {
         display: none!important
@@ -138,6 +144,7 @@ h1 {
     }
     .vliss {
         width: 100px;
+        font-weight: bold;
     }
     .vsiss {
         width: 15px;

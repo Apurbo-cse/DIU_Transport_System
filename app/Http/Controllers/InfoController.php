@@ -8,6 +8,5 @@ class InfoController extends Controller
 {
     public function developers(){
         return view('frontend.developers');
-
     }
 }

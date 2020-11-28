@@ -15,15 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 // *******Frontend Routes*******//
 Route::group([], function (){
-    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/', 'HomeController@index')->name('login');
+    Route::get('home', 'HomeController@home')->name('home');
+
+
     Route::get('schedule','ScheduleController@schedule')->name('schedule');
     Route::get('service','ServiceController@service')->name('service');
-    Route::get('transportinfo','ServiceController@transportinfo')->name('transportinfo');
+    Route::get('stuffinfo','ServiceController@stuffinfo')->name('stuffinfo');
 
     //********* Bus Traking ******//
     Route::get('locate_bus','FacilitiesController@locatebus')->name('locate_bus');
-    Route::get('cityroute','FacilitiesController@cityroute')->name('cityroute');
-
+    Route::get('cityroute/{id}','FacilitiesController@cityroute')->name('cityroute');
 
 
     Route::get('developers','InfoController@developers')->name('developers');

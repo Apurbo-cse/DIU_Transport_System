@@ -1,6 +1,7 @@
 @extends('layouts.frontend.master')
 @section('title', 'Service')
 @section('css')
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/sup.css')}}">
@@ -20,28 +21,28 @@
             <div class="slider-ser">
                 <div class="ser-silder">
                     @foreach($services as $service)
-                        <div class="ser-card ">
-                            <div class="ser-image ser-flex ser-items-center ser-justify-center ">
-                                <img src="{{asset($service->image)}}" alt=" ">
-                            </div>
-                            <hr>
-                            <div>
-                                <h2 class="ser-text-center">{{$service->title}}</h2>
-                                <p class="ser-text-center">{{$service->sub_title}}</p>
-                                <div class="price ser-text-center ">
-                                    {{Str::limit($service->description, 90)}}
-                                </div>
-                                <button class="btn "><a href="{{route('transportinfo')}}">Conatct</a></button>
-                            </div>
+                       <div class="ser-card ">
+                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                            <img src="{{asset($service->image)}}" alt=" ">
                         </div>
+                        <hr>
+                        <div>
+                            <h2 class="ser-text-center">{{$service->title}}</h2>
+                            <p class="ser-text-center">{{$service->sub_title}}</p>
+                            <div class="price ser-text-center ">
+                                {{Str::limit($service->description, 90)}}
+                            </div>
+                            <button class="btn "><a href="{{route('stuffinfo')}}">Conatct</a></button>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
                 <!-- Pagination -->
                 <nav aria-label="Page navigation example">
                     <ul class="pagination pagination-circle justify-content-center">
-                        <li class="page-item">
+                        <li class="page-item ">
                             <a class="page-link ser-pres-btn" style="border-radius: 20px;" aria-label="Previous">
-                                <span  aria-hidden="true">&laquo;</span>
+                                <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <li class="page-item">

@@ -192,10 +192,16 @@ button a:hover {
         flex-direction: column;
         margin-left: 10px;
     }
+    .ser-card {
+        margin-left: 5px;
+    }
 }
 
 @media( max-width:576px) {
     .containerser {
         padding-left: 1rem;
+    }
+    .ser-card {
+        margin-left: 5px;
     }
 }

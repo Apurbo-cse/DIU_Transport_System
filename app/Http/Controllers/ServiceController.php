@@ -12,9 +12,9 @@ class ServiceController extends Controller
         return view('frontend.service', $data);
     }
 
-    public function transportinfo(){
+    public function stuffinfo(){
 
-        return view('frontend.transportinfo');
+        return view('frontend.stuffinfo');
 
     }
 }
