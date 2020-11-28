@@ -17,7 +17,7 @@
             <div class="dropdown">
                 <a class="dropbtn" style="color: white;">Info</a>
                 <div class="dropdown-content">
-                    <a href="about.html">About</a>
+                    <a href="{{route('about')}}">About</a>
                     <a href="{{route('developers')}}">Developers</a>
                     <a href="#">Transport Info</a>
                 </div>

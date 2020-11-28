@@ -26,10 +26,13 @@ Route::group([], function (){
 
     //********* Bus Traking ******//
     Route::get('locate_bus','FacilitiesController@locatebus')->name('locate_bus');
-    Route::get('cityroute/{id}','FacilitiesController@cityroute')->name('cityroute');
+    Route::get('cityroute','FacilitiesController@cityroute')->name('cityroute');
 
-
+    //********* Information ******//
+    Route::get('about','InfoController@about')->name('about');
     Route::get('developers','InfoController@developers')->name('developers');
+
+
     Route::get('gallery','GalleryController@gallery')->name('gallery');
     Route::get('blog','BlogController@blog')->name('blog');
     Route::get('post/{id}/details','BlogController@details')->name('post.details');
