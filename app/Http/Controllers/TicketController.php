@@ -21,4 +21,14 @@ class TicketController extends Controller
         return view('frontend.bus_location');
 
     }
+
+    public function seat(){
+        return view('frontend.seat');
+    }
+
+    public function passangerinfo(){
+
+        return view('frontend.passanger_info');
+
+    }
 }

@@ -49,6 +49,8 @@ Route::group([], function (){
     Route::get('online_ticket','TicketController@ticket')->name('online_ticket');
     Route::get('available_bus','TicketController@availablebus')->name('available_bus');
     Route::get('bus_location','TicketController@buslocation')->name('bus_location');
+    Route::get('seat','TicketController@seat')->name('seat');
+    Route::get('passanger_info','TicketController@passangerinfo')->name('passanger_info');
 });
 
 Auth::routes([

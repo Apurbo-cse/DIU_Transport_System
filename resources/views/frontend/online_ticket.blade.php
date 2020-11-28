@@ -19,7 +19,7 @@
     </div>
 
 
-    <div id="booking" class="boksection">
+    <div id="booking" class="boksection" style="background-image: url('{{asset("assets/frontend/images/noid.jpg")}}')">
         <div class="boksection-center">
             <div class="container">
                 <div class="row">

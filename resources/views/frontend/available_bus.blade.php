@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Available Bus</title>
+    <title>Available Bus :: DIU_Transport_System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,10 +23,12 @@
     <link href="{{asset('assets/frontend/style/main.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/style/nav.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/style/responsive.css')}}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/drop.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/avialable.css')}}">
+
+    <link rel="shortcut icon" href="{{asset('assets/frontend/icons/fav-icon.png')}}" />
+
 
 
 </head>
@@ -36,7 +38,7 @@
 <div class="mobile-fixed-toolbar">
     <ul class="top-nav-mobile-left">
         <li style="width:36%;">
-            <a href="https://daffodilvarsity.edu.bds" target="_blank"><img style="width:120px;" src={{asset('assets/frontend/images/logo.png')}}></a>
+            <a href="https://daffodilvarsity.edu.bds" target="_blank"><img style="width:120px;" src="images/logo.png"></a>
         </li>
     </ul>
     <ul class="top-nav-mobile">
@@ -62,17 +64,21 @@
                     <div class="entry-content">
                         <div class="abx">
                             <b>Available Bus</b>
-                            <p style="margin-left: 10px; margin-bottom: -1px;">Daffodil International University </p>
+                            <p style="margin-left: 10px; margin-bottom: -1px;">DIU- City Campus </p>
+                            <p style="margin-left: 10px; margin-bottom: -1px;">21-10-2020 </p>
                         </div>
                         <div class="hidden-xy">
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-sm-4">
                                     <b>Operator & Coach Info</b>
+                                </div>
+                                <div class="col-sm-2">
+                                    <b>Time</b>
                                 </div>
                                 <div class="col-sm-3">
                                     <b>Seats Capacity</b>
                                 </div>
-                                <div class="col-sm-4 " style=' text-align:right '>
+                                <div class="col-sm-3 " style=' text-align:right '>
                                     <b>Fare (BDT)</b>
                                 </div>
                             </div>
@@ -82,7 +88,7 @@
                             <div class="eabd">
 
                                 <div class="row">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-4">
                                         <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Name</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
@@ -102,12 +108,19 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class='bldec '>
+                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
+                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                            <p>7:15 am</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Seat Capacity</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
                                             <p>40</p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-3">
                                         <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Price (BDT)</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
@@ -116,7 +129,7 @@
                                         </div>
                                         <div class="clearfix">
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="select-seat.html" style="color: #fff;">View Seats</a>
+                                                <a href="{{route('seat')}}" style="color: #fff;">View Seats</a>
                                             </p>
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
                                                 <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
@@ -130,7 +143,7 @@
                             <div class="eabd">
 
                                 <div class="row">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-4">
                                         <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Name</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
@@ -150,12 +163,19 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class='bldec '>
+                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
+                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                            <p>7:15 am</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Seat Capacity</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
                                             <p>40</p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-3">
                                         <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Price (BDT)</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
@@ -164,7 +184,7 @@
                                         </div>
                                         <div class="clearfix">
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="select-seat.html" style="color: #fff;">View Seats</a>
+                                                <a href="{{route('seat')}}" style="color: #fff;">View Seats</a>
                                             </p>
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
                                                 <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
