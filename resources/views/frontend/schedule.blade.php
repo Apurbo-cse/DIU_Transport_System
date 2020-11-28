@@ -1,9 +1,16 @@
 @extends('layouts.frontend.master')
 @section('title', 'Schedule')
-@section('content')
-    <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
 
-    <div class="container">
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('assets/frontend/style/schedule.css')}}">
+@endsection
+
+
+@section('content')
+<div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
+
+<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="page">
@@ -11,8 +18,7 @@
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <h2 style="color: rgba(255, 255, 255, 0);">DIU Transport Schedule</h2>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
                     </div>
 
                     <h2 style="color: rgb(8, 43, 88);text-align: center;">DIU Transport Schedule</h2>
@@ -200,8 +206,7 @@
 
             </div>
         </div>
-    </div>
+</div>
 
-    </div>
-    </div>
+
 @endsection

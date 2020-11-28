@@ -1,15 +1,7 @@
 @extends('layouts.frontend.master')
 @section('title', 'Service')
 @section('css')
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/sup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/co-sup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/teams.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/drop.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/locate.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/ak.css')}}">
 @endsection
 
@@ -21,20 +13,19 @@
             <div class="slider-ser">
                 <div class="ser-silder">
                     @foreach($services as $service)
-                       <div class="ser-card ">
-                        <div class="ser-image ser-flex ser-items-center ser-justify-center ">
-                            <img src="{{asset($service->image)}}" alt=" ">
-                        </div>
-                        <hr>
-                        <div>
-                            <h2 class="ser-text-center">{{$service->title}}</h2>
-                            <p class="ser-text-center">{{$service->sub_title}}</p>
-                            <div class="price ser-text-center ">
-                                {{Str::limit($service->description, 90)}}
+                        <div class="ser-card ">
+                            <div class="ser-image ser-flex ser-items-center ser-justify-center ">
+                                <img src="{{asset($service->image)}}" alt=" ">
                             </div>
-                            <button class="btn "><a href="{{route('stuffinfo')}}">Conatct</a></button>
+                            <hr>
+                            <div>
+                                <h2 class="ser-text-center">{{$service->title}}</h2>
+                                <div class="price ser-text-center ">
+                                    {{Str::limit($service->description, 90)}}
+                                </div>
+                                <button class="btn "><a href="{{route('stuffinfo')}}">Conatct</a></button>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
                 <!-- Pagination -->
@@ -58,14 +49,13 @@
                 <br><br>
             </div>
         </div>
-
     </div>
 @endsection
 
 @section('script')
-    <script src="{{asset('assets/frontend/js/window.js')}}"></script>
-    <script type="text/javascript " src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript " src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript " src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript " src="https://code.jquery.com/jquery-1.11.0.min.js "></script>
+    <script type="text/javascript " src="https://code.jquery.com/jquery-migrate-1.2.1.min.js "></script>
+    <script type="text/javascript " src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script>
     <script src="{{asset('assets/frontend/js/ak.js')}}"></script>
 @endsection
+

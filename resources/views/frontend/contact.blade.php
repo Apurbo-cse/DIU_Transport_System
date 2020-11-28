@@ -16,7 +16,7 @@
             <div class="contact-info">
                 <div class="item">
                     <i class="fas fa-mobile-alt"></i>
-                    01833-102806, 01713-493050
+                    01749969029, 01713-493050
                 </div>
 
                 <div class="item">

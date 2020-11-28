@@ -3,7 +3,7 @@
 
         <!-- Search -->
         <div class="sidebar-widget search-box">
-            <form method="post" action="contact.html">
+            <form method="post" action="#">
                 <div class="form-group">
                     <input type="search" name="search-field" value="" placeholder="Search" required>
                     <button type="submit"><span class="icon fa fa-search"></span></button>
@@ -58,53 +58,59 @@
 
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="latest-news">
-
+                     @foreach($latest_news as $post)
                         <!-- Small Post Start -->
-                      @foreach($latest_news as $post)
                         <div class="post post-small post-list education-post post-separator-border">
                             <div class="postwrap">
-                                    <!-- Image -->
-                                    <a class="image" href="{{route('post.details', $post->id)}}"><img src="{{asset($post->image)}}" alt="post"></a>
-                                    <!-- Content -->
-                                    <div class="content">
 
-                                        <!-- Title -->
-                                        <h5>
-                                            <a href="{{route('post.details', $post->id)}}">{{$post->title}}</a>
-                                        </h5>
+                                <!-- Image -->
+                                <a class="image" href="{{route('post.details', $post->id)}}"><img src="{{asset($post->image)}}" alt="post"></a>
+                                <!-- Content -->
+                                <div class="content">
+                                    <!-- Title -->
+                                    <h5>
+                                        <a href="{{route('post.details', $post->id)}}">{{$post->title}}</a>
+                                    </h5>
 
-                                        <!-- Meta -->
-                                        <div class="meta fix"><span class="meta-item date"><i class="fa fa-clock-o"></i>{{date('M d, Y', strtotime($post->published_at))}}</span></div>
+                                    <!-- Meta -->
+                                    <div class="meta fix">
+                                          <span class="meta-item date"><i class="fa fa-clock-o"></i>{{date('M d, Y', strtotime($post->published_at))}}</span>
                                     </div>
 
+                                </div>
                             </div>
                         </div>
-                    @endforeach
                         <!-- Small Post End -->
-
+                      @endforeach
                     </div>
                     <div class="tab-pane fade" id="popular-news">
-
-                        <!-- Small Post Start -->
-                     @foreach($popular_posts as $post)
+                      @foreach($popular_posts as $post)
+                            <!-- Small Post Start -->
                             <div class="post post-small post-list education-post post-separator-border">
                                 <div class="postwrap">
+
                                     <!-- Image -->
                                     <a class="image" href="{{route('post.details', $post->id)}}"><img src="{{asset($post->image)}}" alt="post"></a>
+
                                     <!-- Content -->
                                     <div class="content">
+
                                         <!-- Title -->
                                         <h5>
                                             <a href="{{route('post.details', $post->id)}}">{{$post->title}}</a>
                                         </h5>
+
                                         <!-- Meta -->
-                                        <div class="meta fix"><span class="meta-item date"><i class="fa fa-clock-o"></i>{{date('M d, Y', strtotime($post->published_at))}}</span></div>
+                                        <div class="meta fix">
+                                               <span class="meta-item date"><i class="fa fa-clock-o"></i>{{date('M d, Y', strtotime($post->published_at))}}</span>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                    @endforeach
-                        <!-- Small Post End -->
+                            <!-- Small Post End -->
 
+                        @endforeach
                     </div>
                 </div>
 

@@ -26,11 +26,11 @@
 <div class="mobile-fixed-toolbar">
     <ul class="top-nav-mobile-left">
         <li style="width:36%;">
-            <a href="https://daffodilvarsity.edu.bds" target="_blank"><img style="width:120px;" src="images/logo.png"></a>
+            <a href="https://daffodilvarsity.edu.bds" target="_blank"><img style="width:120px;" src="{{asset('assets/frontend/images/logo.png')}}"></a>
         </li>
     </ul>
     <ul class="top-nav-mobile">
-        <li><a href="#" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+        <li><a href="{{route('passanger_info')}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
     </ul>
 </div>
 

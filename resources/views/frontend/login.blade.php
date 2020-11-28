@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{asset('assets/frontend/icons/fav-icon.png')}}" />
     <link rel="stylesheet" href="{{asset('assets/frontend/style/login.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/frontend/style/loader.css')}}">
-    <title>DIU Transpot Log IN</title>
+    <title>Login :: DIU_Transport_System</title>
 </head>
 
 <body>

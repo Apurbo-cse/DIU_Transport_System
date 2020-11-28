@@ -13,6 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="shortcut icon" href="{{asset('assets/frontend/icons/fav-icon.png')}}" />
     <link rel="stylesheet" href="{{asset('assets/frontend/style/co-sup.css')}}">
 
     <link href="{{asset('assets/frontend/style/bootstrap.css')}}" rel="stylesheet">
@@ -27,9 +28,6 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/style/drop.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/avialable.css')}}">
 
-    <link rel="shortcut icon" href="{{asset('assets/frontend/icons/fav-icon.png')}}" />
-
-
 
 </head>
 
@@ -38,11 +36,11 @@
 <div class="mobile-fixed-toolbar">
     <ul class="top-nav-mobile-left">
         <li style="width:36%;">
-            <a href="https://daffodilvarsity.edu.bds" target="_blank"><img style="width:120px;" src="images/logo.png"></a>
+            <a href="https://daffodilvarsity.edu.bds" target="_blank"><img style="width:120px;" src="{{asset('assets/frontend/images/logo.png')}}"></a>
         </li>
     </ul>
     <ul class="top-nav-mobile">
-        <li><a href="#" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+        <li><a href="{{route('available_bus')}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
     </ul>
 </div>
 
@@ -223,8 +221,6 @@
 <button class="goTop fas fa-arrow-up"></button>
 
 @include('layouts.frontend._script')
-
-<script src="{{asset('assets/frontend/js/window.js')}}"></script>
 
 </body>
 

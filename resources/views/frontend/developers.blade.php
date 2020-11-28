@@ -1,15 +1,5 @@
 @extends('layouts.frontend.master')
-@section('title', 'Home')
-@section('css')
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/sup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/co-sup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/teams.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/most_post.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/drop.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontend/style/locate.css')}}">
-
-@endsection
+@section('title', 'Developers')
 
 @section('content')
     <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
@@ -58,17 +48,17 @@
                 <div class="col-right">
                     <h4><span style="color: red;">Co-</span>Supervisor</h4>
                     <h6>
-                        Md. Sabab Zulfiker
+                        Mohammad Jahangir Alam
                     </h6>
                     <br>
                     <div>
                         <p class="pro-type">Lecturer</p>
                         <p class="pro-type">Department of CSE</p>
-                        <p class="pro-type">Email : sabab.cse@diu.edu.bd</p>
+                        <p class="pro-type">Email : jahangir.cse@diu.edu.bd</p>
                         <p class="pro-type">Daffodil International University</p>
                     </div>
                     <div class="icons-container" style="margin-left: 10px;">
-                        <a href="https://www.facebook.com/sabab.zulfiker" target="_blank" class="icon">
+                        <a href="#" target="_blank" class="icon">
                             <i class="fab fa-facebook"></i>
                         </a>
                         <a href="#" target="_blank" class="icon">
@@ -77,15 +67,15 @@
                         <a href="#" target="_blank" class="icon">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://sites.google.com/view/mdsababzulfikercse22" target="_blank" class="icon">
+                        <a href="#" target="_blank" class="icon">
                             <i class="fas fa-globe"></i>
                         </a>
                     </div>
                 </div><br>
 
-                <img src="{{asset('assets/frontend/images/team/zulfiker.jpg')}}" alt="" class="co-supervisor-pic" style="margin-top: 10px;">
+                <img src="{{asset('assets/frontend/images/team/jahangir.jpg')}}" alt="" class="co-supervisor-pic" style="margin-top: 10px;">
             </div>
-
+        </div>
     </section>
 
     <div class="team">
@@ -218,8 +208,5 @@
     <br><br>
 @endsection
 
-@section('script')
-    <script src="{{asset('assets/frontend/js/window.js')}}"></script>
-@endsection
 
 

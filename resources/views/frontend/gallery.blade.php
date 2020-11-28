@@ -1,5 +1,5 @@
 @extends('layouts.frontend.master')
-@section('title', 'Schedule')
+@section('title', 'Gallery')
 @section('content')
 <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
 </div>
