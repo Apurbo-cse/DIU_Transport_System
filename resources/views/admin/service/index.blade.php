@@ -36,11 +36,12 @@
                         <thead>
                         <tr>
                             <th class="text-center" style="width: 10px">SL#</th>
+                            <th class="text-center" >Bus Category</th>
                             <th class="text-center" >Title</th>
                             <th class="text-center" >Sub_Title</th>
                             <th class="text-center" >Description</th>
                             <th class="text-center" >Status</th>
-                            <th class="text-center" style="width: 40%">Image</th>
+                            <th class="text-center" style="width: 30%">Image</th>
                             <th class="text-center" style="width: 12%">Actions</th>
                         </tr>
                         </thead>
@@ -50,6 +51,7 @@
                         @foreach($services as $service)
                             <tr>
                                 <td>{{$serial++ }}</td>
+                                <td>{{$service->category->name}}</td>
                                 <td>{{$service->title}}</td>
                                 <td>{{$service->sub_title}}</td>
                                 <td>{{$service->description}}</td>

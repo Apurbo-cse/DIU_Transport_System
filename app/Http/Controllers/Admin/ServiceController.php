@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Bus_Category;
 use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        $data['bus_categories'] = Bus_Category::orderBy('name')->get();
+        return view('admin.service.create', $data);
     }
 
     /**
@@ -39,6 +41,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'category_id' => 'required',
             'title'=>'required',
             'sub_title'=>'required',
             'description'=>'required',
@@ -56,6 +59,7 @@ class ServiceController extends Controller
 
         }
 
+        $data['category_id'] = $request->category_id;
         $data['title'] = $request->title;
         $data['sub_title'] = $request->sub_title;
         $data['description'] = $request->description;
@@ -85,8 +89,10 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
+        $data['bus_categories'] = Bus_Category::orderBy('name')->get();
         $data['service']=$service;
         return view('admin.service.edit', $data);
+
     }
 
     /**
@@ -99,6 +105,7 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $request->validate([
+            'category_id' => 'required',
             'title'=>'required',
             'sub_title'=>'required',
             'description'=>'required',
@@ -119,6 +126,7 @@ class ServiceController extends Controller
             }
         }
 
+        $data['category_id'] = $request->category_id;
         $data['title'] = $request->title;
         $data['sub_title'] = $request->sub_title;
         $data['description'] = $request->description;

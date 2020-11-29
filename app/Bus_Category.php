@@ -20,4 +20,9 @@ class Bus_Category extends Model
     {
         return $this->hasMany(Bus::class);
     }
+
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

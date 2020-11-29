@@ -21,6 +21,21 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Bus Category</label>
+                            <div class="col-sm-10">
+                                <select name="category_id" id="category_id" class="form-control">
+                                    <option value="" style="display: none" selected>Select Category</option>
+                                    @foreach($bus_categories as $category)
+                                        <option @if(old('category_id') == $category->id) selected @endif value="{{ $category->id }}"> {{ $category->name }} </option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Service Title</label>
                             <div class="col-md-10">
