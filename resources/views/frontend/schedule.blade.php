@@ -10,7 +10,7 @@
 @section('content')
 <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)"></div>
 
-<div class="container">
+<div class="schedule-container">
         <div class="row">
             <div class="col-md-12">
                 <div class="page">
@@ -195,7 +195,7 @@
                     </tr>
                 </table>
                 <div class="row" style="color: tomato;">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="font-size: 14px;">
                         * DIU = Daffodil Internatinal University.<br> * CC = City Campus, Dhanmondi.<br> * UC = Uttara Campus , Uttara.
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

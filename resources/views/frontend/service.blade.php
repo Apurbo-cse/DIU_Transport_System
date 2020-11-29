@@ -19,9 +19,9 @@
                             </div>
                             <hr>
                             <div>
-                                <h2 class="ser-text-center">{{$service->title}}</h2>
-                                <div class="price ser-text-center ">
-                                    {{Str::limit($service->description, 90)}}
+                                <h2 class="ser-text-center" style="font-size: 20px">{{$service->title}}</h2>
+                                <div class="price ser-text-center "style="font-size: 12px">
+                                    {{Str::limit($service->description, 80)}}
                                 </div>
                                 <button class="btn "><a href="{{route('stuffinfo')}}">Conatct</a></button>
                             </div>

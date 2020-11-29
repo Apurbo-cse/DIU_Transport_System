@@ -5,9 +5,6 @@
         @include('layouts.frontend._slider')
     </div>
 
-
-
-
     <br><br>
     <!-- Contact -->
     <section id="contact">
@@ -16,18 +13,23 @@
             <div class="contact-info">
                 <div class="item">
                     <i class="fas fa-mobile-alt"></i>
-                    01749969029, 01713-493050
+                     <p style="font-size: 13px">
+                        01749969029, 01713-493050
+                     </p>
                 </div>
 
                 <div class="item">
                     <i class="fas fa-envelope"></i>
-                    info@daffodilvarsity.edu.bd
+                    <p style="font-size: 13px">
+                        info@daffodilvarsity.edu.bd
+                    </p>
                 </div>
 
                 <div class="item">
                     <a href="#maps" style="color: white;">
                         <i class="fas fa-map-marker-alt"></i>
-                        Daffodil Internatinal University, Ashulia, Dhaka</a>
+                        <p style="font-size: 13px">Daffodil Internatinal University, Ashulia, Dhaka</p>
+                    </a>
                 </div>
             </div>
 
