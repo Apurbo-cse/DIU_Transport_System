@@ -21,8 +21,10 @@ Route::group([], function (){
 
 
     Route::get('schedule','ScheduleController@schedule')->name('schedule');
+
     Route::get('service','ServiceController@service')->name('service');
-    Route::get('stuffinfo','ServiceController@stuffinfo')->name('stuffinfo');
+    Route::get('stuffinfo/{id}','ServiceController@stuffinfo')->name('stuffinfo');
+
 
     //********* Bus Traking ******//
     Route::get('locate_bus','FacilitiesController@locatebus')->name('locate_bus');

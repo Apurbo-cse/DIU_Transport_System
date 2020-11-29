@@ -23,7 +23,7 @@
                                 <div class="price ser-text-center "style="font-size: 12px">
                                     {{Str::limit($service->description, 80)}}
                                 </div>
-                                <button class="btn "><a href="{{route('stuffinfo')}}">Conatct</a></button>
+                              <button class="btn "><a href="{{route('stuffinfo', $service->category_id)}}">Conatct</a></button>
                             </div>
                         </div>
                     @endforeach

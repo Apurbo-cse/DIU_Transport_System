@@ -9,154 +9,37 @@
             <h1 class="section-title">Drivers And Helpers</h1>
 
             <div class="button-row">
-
-                <div class="row1">
-                    <a href="ac.html" class="bus">AC Bus</a>
-                </div> &nbsp;
-
-                <div class="row1">
-                    <a href="non-ac.html" class="bus">Non-AC</a>
-                </div> &nbsp;
-                <div class="row1">
-                    <a href="ambulance.html" class="bus">Ambulance</a>
-                </div> &nbsp;
-                <div class="row1">
-                    <a href="car.html" class="bus">Car</a>
-                </div> &nbsp;
+                @foreach($buses_info as $bus_info)
+                    <div class="row1">
+                        <a href="{{route('stuffinfo', $bus_info->id)}}" class="bus">{{$bus_info->name}}</a>
+                    </div> &nbsp;
+                @endforeach&nbsp;
             </div>
             <br>
 
             <b>
-                <h5>Non-AC Bus (Suryamukhi)</h5>
+                <h5>{{$buses_category->name}}</h5>
             </b>
             <div class="time-line">
-
-                <div class="block">
-                    <h5>City Campus Route</h5>
-                    <h3>Senior</h3>
-                    <table class="table table-bordered" style="font-size: 14px;">
-                        <tr>
-                            <td>Driver Name : Abu Hossain</td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                        <tr>
-                            <td>Helper Name : Ismail </td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="block">
-                    <h5>Uttora Route</h5>
-                    <h3>Senior</h3>
-                    <table class="table table-bordered" style="font-size: 14px;">
-                        <tr>
-                            <td>Driver Name : Hannan </td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                        <tr>
-                            <td>Helper Name : Sagor </td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="block">
-                    <h5>City Campus Route</h5>
-                    <h3>Senior</h3>
-                    <table class="table table-bordered" style="font-size: 14px;">
-                        <tr>
-                            <td>Driver Name : Abu Hossain</td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                        <tr>
-                            <td>Helper Name : Ismail </td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="block">
-                    <h5>Uttora Route</h5>
-                    <h3>Senior</h3>
-                    <table class="table table-bordered" style="font-size: 14px;">
-                        <tr>
-                            <td>Driver Name : Hannan </td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                        <tr>
-                            <td>Helper Name : Sagor </td>
-                            <td>Phone : +88017XXXXXXX</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <b>
-                    <h5>Non-AC Bus</h5>
-                </b>
-                <div class="time-line">
-
+                @if($stafs->count() < 1)
+                    <h5 class="alert-danger d-block w-100 text-center py-sm-2" style="border-radius: 4px;">No Bus Availavle !! Thank you</h5>
+                @endif
+                @foreach($stafs as $staf)
                     <div class="block">
-                        <h5>City Campus Route</h5>
-                        <h3>Senior</h3>
+                        <h5>{{$staf->route->route_name}}</h5>
+                        <h3>{{$staf->designation}}</h3>
                         <table class="table table-bordered" style="font-size: 14px;">
                             <tr>
-                                <td>Driver Name : Abu Hossain</td>
-                                <td>Phone : +88017XXXXXXX</td>
+                                <td>Driver Name : {{$staf->driver_name}} </td>
+                                <td>Phone : +88{{$staf->driver_phone}}</td>
                             </tr>
                             <tr>
-                                <td>Helper Name : Ismail </td>
-                                <td>Phone : +88017XXXXXXX</td>
+                                <td>Helper Name : {{$staf->helper_name}} </td>
+                                <td>Phone : +88{{$staf->helper_phone}}</td>
                             </tr>
                         </table>
                     </div>
-
-                    <div class="block">
-                        <h5>Uttora Route</h5>
-                        <h3>Senior</h3>
-                        <table class="table table-bordered" style="font-size: 14px;">
-                            <tr>
-                                <td>Driver Name : Hannan </td>
-                                <td>Phone : +88017XXXXXXX</td>
-                            </tr>
-                            <tr>
-                                <td>Helper Name : Sagor </td>
-                                <td>Phone : +88017XXXXXXX</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="block">
-                        <h5>City Campus Route</h5>
-                        <h3>Senior</h3>
-                        <table class="table table-bordered" style="font-size: 14px;">
-                            <tr>
-                                <td>Driver Name : Abu Hossain</td>
-                                <td>Phone : +88017XXXXXXX</td>
-                            </tr>
-                            <tr>
-                                <td>Helper Name : Ismail </td>
-                                <td>Phone : +88017XXXXXXX</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="block">
-                        <h5>Uttora Route</h5>
-                        <h3>Senior</h3>
-                        <table class="table table-bordered" style="font-size: 14px;">
-                            <tr>
-                                <td>Driver Name : Hannan </td>
-                                <td>Phone : +88017XXXXXXX</td>
-                            </tr>
-                            <tr>
-                                <td>Helper Name : Sagor </td>
-                                <td>Phone : +88017XXXXXXX</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

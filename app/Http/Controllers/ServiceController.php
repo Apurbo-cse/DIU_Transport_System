@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Bus_Category;
 use App\Service;
+use App\Stuff;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -12,9 +14,12 @@ class ServiceController extends Controller
         return view('frontend.service', $data);
     }
 
-    public function stuffinfo(){
+    public function stuffinfo($id){
 
-        return view('frontend.stuffinfo');
+        $data['stafs']= Stuff::where('status', 'active')->where('category_id', $id)->get();
+        $data['buses_info'] = Bus_Category::where('status', 'active')->get();
+        $data['buses_category'] = Bus_Category::where('status', 'active')->where('id', $id)->first();
+        return view('frontend.stuffinfo', $data);
 
     }
 }
