@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 // *******Frontend Routes*******//
-Route::group([], function (){
+Route::get('student/login', 'HomeController@stdlogin')->name('student.login');
+Route::get('student/registration', 'HomeController@stdreg')->name('student.registration');
+Route::get('/', 'HomeController@home')->name('home');
 
-    Route::get('/', 'HomeController@index')->name('login');
-    Route::get('home', 'HomeController@home')->name('home');
+Route::group(['middleware'=>'auth'], function (){
 
+    /*Route::get('/', 'HomeController@index')->name('login');*/
 
     Route::get('schedule','ScheduleController@schedule')->name('schedule');
-
     Route::get('service','ServiceController@service')->name('service');
     Route::get('stuffinfo/{id}','ServiceController@stuffinfo')->name('stuffinfo');
-
 
     //********* Bus Traking ******//
     Route::get('locate_bus','FacilitiesController@locatebus')->name('locate_bus');
@@ -43,7 +43,8 @@ Route::group([], function (){
 
     //********** User  *********//
 
-    Route::get('profile','UserController@profile')->name('profile');
+    Route::get('profile/{id}','UserController@profile')->name('student.profile');
+    Route::get('profile/{id}/update','UserController@profileupdate')->name('profile.update');
     Route::get('ticket_list','UserController@ticketlist')->name('ticket_list');
 
     //********Online Ticket*******//
@@ -56,7 +57,6 @@ Route::group([], function (){
 });
 
 Auth::routes([
-    'register' => false, // Registration Routes...
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
@@ -64,10 +64,10 @@ Auth::routes([
 /*Route::get('/home', 'HomeController@index')->name('home');*/
 
 // *******Admin Panel Routes*******//
+Route::get('admin/login', 'Admin\DashboardController@login')->name('admin.login');
 
-Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'auth'], function (){
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth','admin']], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
-    Route::resource('role', 'RoleController');
     Route::resource('user', 'UserController');
     Route::resource('slider', 'SliderController');
     Route::resource('video', 'VideoController');

@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{asset('assets/frontend/icons/fav-icon.png')}}" />
     <link rel="stylesheet" href="{{asset('assets/frontend/style/login.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/frontend/style/loader.css')}}">
-    <title>Login :: DIU_Transport_System</title>
+    <title>DIU Transpot Log IN</title>
 </head>
 
 <body>
@@ -23,48 +23,82 @@
 <div class="logincontainer">
     <div class="forms-anx">
         <div class="signin-signup">
-            <form action="login.php" method="POST" class="sign-in-form">
+            <form action="{{url('login')}}" method="POST" class="sign-in-form">
+                @csrf
                 <h2 class="login-title">DIU Transport</h2>
                 <div class="login-input-field">
                     <i class="fas fa-id-card"></i>
-                    <input type="id" name="user-id" placeholder="User ID" required />
+                    <input type="email" name="email" autocomplete="true" placeholder="email" required />
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="user-pass" placeholder="Password" required />
+                    <input type="password" name="password" autocomplete="true" placeholder="Password" required />
                 </div>
-                <button name="login-btn" value="Login" class="btn">
-                    <a href="{{route('home')}}" style="text-decoration: none;color: #fff;">Login</a></button>
+                <button type="submit" value="Login" class="btn">
+                    Login
+                    {{--<a href="" style="text-decoration: none;color: #fff;"></a>--}}
+                </button>
 
             </form>
 
-            <form action="signup.php" method="POST" class="sign-up-form">
+            <form method="POST" action="{{ route('register') }}" class="sign-up-form">
+                @csrf
                 <h2 class="login-title">User Info</h2>
                 <div class="login-input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="user-name" class="from-control" placeholder="Username" required />
+                    <input type="text" name="name" class="from-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus />
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-id-card"></i>
-                    <input type="id" name="user-id" class="from-control" placeholder="171-15-XXX" required />
+                    <input type="text" name="user_id" class="from-control @error('user_id') is-invalid @enderror" value="{{ old('user_id') }}" autocomplete="user_id" autofocus placeholder="171-15-XXX" required />
+                    @error('user_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-graduation-cap"></i>
-                    <input type="department" name="user-dept" class="from-control" placeholder="CSE" required />
+                    <input type="text" name="department" class="from-control @error('department') is-invalid @enderror" value="{{ old('department') }}" autocomplete="department" autofocus placeholder="CSE" required />
+                    @error('department')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="phone" name="user-phonel" class="from-control" placeholder="+8801732XXXX" required />
+                    <input type="text" name="phone_no" class="from-control @error('phone_no') is-invalid @enderror" value="{{ old('phone_no') }}" autocomplete="phone_no" autofocus placeholder="+8801732XXXX" required />
+                    @error('phone_no')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="user-email" class="from-control" placeholder="abc15-101@diu.edu.bd" required />
+                    <input type="email" name="email" class="from-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="abc15-101@diu.edu.bd" required />
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="user-pass" class="from-control" placeholder="Password" required />
+                    <input type="password" name="password" class="from-control @error('password') is-invalid @enderror" value="{{ old('password') }}" autocomplete="password" autofocus placeholder="Password" required />
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
-                <button name="signup-btn" class="btn">signup</button>
+                <button name="signup-btn" type="submit" class="btn">Sign up</button>
 
             </form>
         </div>

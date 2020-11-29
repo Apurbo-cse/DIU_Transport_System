@@ -26,9 +26,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function stdlogin()
     {
         return view('frontend.login');
+    }
+
+    public function stdreg()
+    {
+        //return view('frontend.login');
+    }
+
+    public function index()
+    {
+        //return view('frontend.login');
     }
 
 
