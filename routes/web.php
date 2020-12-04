@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // *******Frontend Routes*******//
 Route::get('student/login', 'HomeController@stdlogin')->name('student.login');
 Route::get('student/registration', 'HomeController@stdreg')->name('student.registration');
-Route::get('/', 'HomeController@home')->name('home');
+Route::get('/', 'HomeController@home')->name('user.home');
 
 Route::group(['middleware'=>'auth'], function (){
 
@@ -66,7 +66,7 @@ Auth::routes([
 // *******Admin Panel Routes*******//
 Route::get('admin/login', 'Admin\DashboardController@login')->name('admin.login');
 
-Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth','admin']], function (){
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
     Route::resource('user', 'UserController');
     Route::resource('slider', 'SliderController');

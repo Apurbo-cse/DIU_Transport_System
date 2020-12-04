@@ -37,7 +37,7 @@
                 <div>
                     <p class="pro-type">ID : {{$user->user_id}}</p>
                     <p class="pro-type">Department of {{$user->department}}</p>
-                    <p class="pro-type">Email : {{$user->user_id}}</p>
+                    <p class="pro-type">Email : {{$user->email}}</p>
                     <p class="pro-type">Phone : {{$user->phone_no}}</p>
                     <p class="pro-type">Daffodil International University</p>
 

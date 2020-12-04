@@ -28,7 +28,7 @@
                 <h2 class="login-title">DIU Transport</h2>
                 <div class="login-input-field">
                     <i class="fas fa-id-card"></i>
-                    <input type="email" name="email" autocomplete="true" placeholder="email" required />
+                    <input type="email" name="email" autocomplete="true" placeholder="Email" required />
                 </div>
                 <div class="login-input-field">
                     <i class="fas fa-lock"></i>
@@ -46,7 +46,7 @@
                 <h2 class="login-title">User Info</h2>
                 <div class="login-input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="name" class="from-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus />
+                    <input type="text" name="name" class="from-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required placeholder="Name" autocomplete="name" autofocus />
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

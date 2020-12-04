@@ -37,7 +37,7 @@ class LoginController extends Controller
             return $this->redirectTo;
         }elseif (Auth::check() && Auth::user()->role_id == 2)
         {
-            $this->redirectTo = route('home');
+            $this->redirectTo = route('user.home');
             return $this->redirectTo;
         }else
         {

@@ -10,11 +10,11 @@
 <div class="mobile-fixed-toolbar">
     <ul class="top-nav-mobile-left">
         <li style="width:36%;">
-            <a href="{{route('home')}}"><img style="width:120px;" src="{{asset('assets/frontend/images/logo.png')}}"></a>
+            <a href="{{route('user.home')}}"><img style="width:120px;" src="{{asset('assets/frontend/images/logo.png')}}"></a>
         </li>
     </ul>
     <ul class="top-nav-mobile">
-        <li><a href="{{route('home')}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+        <li><a href="{{route('user.home')}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
     </ul>
 </div>
 
