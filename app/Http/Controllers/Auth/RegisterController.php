@@ -34,7 +34,7 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        $this->redirectTo = route('home');
+        $this->redirectTo = route('user.home');
         return $this->redirectTo;
     }
 
@@ -62,7 +62,7 @@ class RegisterController extends Controller
             'user_id' => ['required', 'string', 'min:11', 'unique:users'],
             'department' => ['required', 'string', 'min:3'],
             'phone_no' => ['required', 'string', 'min:11'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:6'],
         ]);
     }
 
@@ -82,6 +82,8 @@ class RegisterController extends Controller
             'user_id' => $data['user_id'],
             'department' => $data['department'],
             'phone_no' => $data['phone_no'],
+            'role_id' => 2,
+            'image' => 'assets/frontend/images/profile.jpg',
 
         ]);
     }

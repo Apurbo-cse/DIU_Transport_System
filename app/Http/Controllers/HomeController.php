@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function stdreg()
     {
-        //return view('frontend.login');
+        return view('frontend.registration');
     }
 
     public function index()
