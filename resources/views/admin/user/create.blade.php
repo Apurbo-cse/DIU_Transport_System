@@ -25,6 +25,20 @@
                     <form action="{{ route('user.store') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
+                            <label class="col-sm-2 control-label">User Role</label>
+                            <div class="col-sm-10">
+                                <select name="role_id" id="role_id" class="form-control">
+                                    <option value="" style="display: none" selected>Select User Role</option>
+                                    @foreach($roles as $role)
+                                        <option @if(old('role_id') == $role->id) selected @endif value="{{ $role->id }}"> {{ $role->name }} </option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-2 control-label">Name</label>
                             <div class="col-md-10">
                                 <input name="name" value="{{ old('name') }}" type="text" class="form-control" placeholder="Name">

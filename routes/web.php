@@ -69,6 +69,7 @@ Route::get('admin/login', 'Admin\DashboardController@login')->name('admin.login'
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
     Route::resource('user', 'UserController');
+    Route::resource('role', 'RoleController');
     Route::resource('slider', 'SliderController');
     Route::resource('video', 'VideoController');
     Route::resource('gallery', 'GalleryController');

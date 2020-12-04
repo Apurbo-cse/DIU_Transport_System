@@ -54,7 +54,7 @@
                                     <form class="d-inline-block pull-right" method="post" action="{{ route('role.destroy',$role->id) }}">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger" onclick="return confirm('Are you confirm to delete?')">Delete</button>
+                                        <button class="btn btn-danger" onclick="return confirm('Role Not Deleted?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>

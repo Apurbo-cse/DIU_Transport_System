@@ -108,8 +108,6 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $role->delete();
-        session()->flash('success', 'Role Deleted Successfully');
-        return redirect()->route('role.index');
+        return redirect()->back();
     }
 }

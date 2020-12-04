@@ -43,7 +43,8 @@
                             <th class="text-center" >User Id</th>
                             <th class="text-center" >Department</th>
                             <th class="text-center" >Phone No</th>
-                            <th class="text-center" style="width: 28%">Image</th>
+                            <th class="text-center" >Role</th>
+                            <th class="text-center" style="width: 25%">Image</th>
                             <th class="text-center" style="width: 12%">Actions</th>
                         </tr>
                         </thead>
@@ -58,6 +59,7 @@
                                 <td>{{ $user->user_id }}</td>
                                 <td>{{ $user->department }}</td>
                                 <td>{{ $user->phone_no }}</td>
+                                <td>{{ $user->role->name }}</td>
                                 <td class="text-center"><img src="{{ asset($user->image) }}"  width="20%" alt=""></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="{{ route('user.edit',$user->id) }}">Edit</a>

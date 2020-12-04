@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $data['roles'] = Role::orderBy('name')->get();
+        return view('admin.user.create', $data);
     }
 
     /**
@@ -41,6 +43,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
+            'role_id' => 'required',
             'user_id' => 'required',
             'department' => 'required',
             'phone_no' => 'required',
@@ -82,6 +85,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $data['roles'] = Role::orderBy('name')->get();
         $data['user'] = User::findOrFail($id);
         return view('admin.user.edit', $data);
     }
@@ -98,6 +102,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'role_id' => 'required',
             'user_id' => 'required',
             'department' => 'required',
             'phone_no' => 'required',
@@ -108,6 +113,7 @@ class UserController extends Controller
         }
         $data['name'] = $request->name;
         $data['email'] = $request->email;
+        $data['role_id'] = $request->role_id;
         $data['user_id'] = $request->user_id;
         $data['department'] = $request->department;
         $data['phone_no'] = $request->phone_no;
