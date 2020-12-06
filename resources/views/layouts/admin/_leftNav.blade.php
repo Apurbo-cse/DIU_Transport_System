@@ -1,7 +1,7 @@
 <div class="sidebar-inner slimscrollleft">
     <div class="user-details">
         <div class="text-center">
-            <img src="{{asset('assets/admin/images/admin.png')}}" alt="" class="img-circle">
+            <img src="{{ asset(auth()->user()->image) }}" alt="" class="img-circle">
         </div>
         <div class="user-info">
             <div class="dropdown">

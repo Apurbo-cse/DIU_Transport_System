@@ -14,7 +14,7 @@ class CreateBusCategoriesTable extends Migration
     public function up()
     {
         Schema::create('bus__categories', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->enum('status', ['active', 'inactive']);

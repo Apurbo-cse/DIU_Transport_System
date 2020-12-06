@@ -14,7 +14,7 @@ class CreateStoppagesTable extends Migration
     public function up()
     {
         Schema::create('stoppages', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('route_id');
             $table->foreign('route_id')->references('id')->on('routes');
             $table->string('name');
