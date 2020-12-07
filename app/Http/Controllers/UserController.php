@@ -18,15 +18,24 @@ class UserController extends Controller
 
     public function profileupdate(Request $request)
     {
-
-
         $user_id = Auth::user()->id;
         $user = User::findOrFail($user_id);
+
+        $request->validate([
+            'name' => 'required',
+            'department' => 'required',
+            'phone_no' => 'required|min:11|numeric',
+            'image' => 'mimes:jpeg,png|max:8192',
+        ]);
+
+
 
         $user->name = $request->input('name');
         $user->department = $request->input('department');
         $user->phone_no = $request->input('phone_no');
-        $user->password = bcrypt($request->password);
+        if ($request->password != null){
+            $user->password = bcrypt($request->password);
+        }
 
         if ($request->hasFile('image'))
 
@@ -41,6 +50,7 @@ class UserController extends Controller
             $file->move('images/user/', $filename);
             $user->image = $filename;
         }
+
 
         $user->update();
         return redirect()->back();

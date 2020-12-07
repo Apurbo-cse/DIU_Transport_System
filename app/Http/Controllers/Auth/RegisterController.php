@@ -83,8 +83,6 @@ class RegisterController extends Controller
             'department' => $data['department'],
             'phone_no' => $data['phone_no'],
             'role_id' => 2,
-            'image' => 'assets/frontend/images/profile.jpg',
-
         ]);
     }
 

@@ -59,7 +59,7 @@
 
         <div class="col-left">
             <div class="supervisor-img">
-                <img src="@if($user->image){{asset('images/user/'. $user->image)}}@endif" alt="img">
+                <img src="{{(!empty($user->image))?url('images/user/'.$user->image):url('images/user/profile.jpg')}}" alt="img">
             </div>
         </div>
         <div class="col-right">
@@ -86,11 +86,17 @@
         <i class="fas fa-times close"></i>
         <img src="{{asset('images/user/'. Auth::user()->image)}}" class="img" alt="Cookies">
         <input type="file" name="image" class="picz" />
+            @error('image')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         <h2 style="font-size:20px ;">Edit Profile</h2>
         <div class="login-input-field">
             <i class="fas fa-user"></i>
             <input type="text" name="name" value="{{Auth::user()->name}}" placeholder="Username" />
         </div>
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         <div class="login-input-field">
             <i class="fas fa-id-card"></i>
             <input type="text" name="user_id" value="{{Auth::user()->user_id}}" disabled />
@@ -99,18 +105,25 @@
             <i class="fas fa-graduation-cap"></i>
             <input type="text" name="department" value="{{Auth::user()->department}}" placeholder="Department" />
         </div>
+            @error('department')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         <div class="login-input-field">
             <i class="fas fa-phone"></i>
             <input type="text" name="phone_no" value="{{Auth::user()->phone_no}}" placeholder="017xxxxxxxx" />
         </div>
+            @error('phone_no')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         <div class="login-input-field">
             <i class="fas fa-envelope"></i>
             <input type="email" name="email" value="{{Auth::user()->email}}" disabled />
         </div>
         <div class="login-input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" name="password" value="Password"  />
+            <input type="password" name="password" placeholder="********"  />
         </div>
+
         <button name="signup-btn" class="btnxa">Confirm</button>
 
     </form>

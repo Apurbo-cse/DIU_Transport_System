@@ -79,7 +79,7 @@
                             <label class="col-md-2 control-label">Department</label>
                             <div class="col-md-10">
                                 <input name="department" value="{{$user->department}}" type="text" class="form-control" placeholder="Department">
-                                @error('name')
+                                @error('department')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
