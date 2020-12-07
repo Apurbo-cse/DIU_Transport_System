@@ -44,7 +44,7 @@ Route::group(['middleware'=>['student','auth']], function (){
     //********** User  *********//
 
     Route::get('profile/{id}','UserController@profile')->name('student.profile');
-    Route::get('profile/{id}/update','UserController@profileupdate')->name('profile.update');
+    Route::post('profile/update','UserController@profileupdate')->name('profile.update');
     Route::get('ticket_list','UserController@ticketlist')->name('ticket_list');
 
     //********Online Ticket*******//

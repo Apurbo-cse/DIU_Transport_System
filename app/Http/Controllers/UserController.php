@@ -4,32 +4,46 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
 
 class UserController extends Controller
 {
     public function profile($id){
         $data['user'] = User::where('id', $id)->first();
-        //return $data;
         return view('frontend.profile', $data);
     }
 
 
-    public function profileupdate(Request $request,User $user, $id)
+    public function profileupdate(Request $request)
     {
-        //return $request;
-        /*$request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'department' => ['required', 'string', 'min:3'],
-            'phone_no' => ['required', 'string', 'min:11'],
-            'password' => ['required', 'string', 'min:8'],
-        ]);*/
 
 
-        $data = $request->except('_token', '_method', 'signup-btn');
+        $user_id = Auth::user()->id;
+        $user = User::findOrFail($user_id);
 
-        //$user->update($data);
-        //User::updated($data);
-        return redirect()->route('profile', $id);
+        $user->name = $request->input('name');
+        $user->department = $request->input('department');
+        $user->phone_no = $request->input('phone_no');
+        $user->password = bcrypt($request->password);
+
+        if ($request->hasFile('image'))
+
+        {
+            $destination = 'images/user/'.$user->image;
+            if (File::exists($destination)){
+              File::delete($destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalName();
+            $filename = $extension;
+            $file->move('images/user/', $filename);
+            $user->image = $filename;
+        }
+
+        $user->update();
+        return redirect()->back();
     }
 
 
