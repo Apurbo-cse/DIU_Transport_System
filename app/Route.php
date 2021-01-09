@@ -34,4 +34,9 @@ class Route extends Model
         return $this->hasMany(Stoppages::class);
     }
 
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
 }

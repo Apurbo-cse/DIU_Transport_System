@@ -22,7 +22,7 @@ Route::group(['middleware'=>['student','auth']], function (){
 
     /*Route::get('/', 'HomeController@index')->name('login');*/
 
-    Route::get('schedule','ScheduleController@schedule')->name('schedule');
+    //Route::get('schedule','ScheduleController@schedule')->name('schedule');
     Route::get('service','ServiceController@service')->name('service');
     Route::get('stuffinfo/{id}','ServiceController@stuffinfo')->name('stuffinfo');
 
@@ -54,6 +54,8 @@ Route::group(['middleware'=>['student','auth']], function (){
     Route::get('bus_location','TicketController@buslocation')->name('bus_location');
     Route::get('seat','TicketController@seat')->name('seat');
     Route::get('passanger_info','TicketController@passangerinfo')->name('passanger_info');
+
+
 });
 
 Auth::routes([
@@ -81,4 +83,5 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin','auth'], 'namespace'=>'A
     Route::resource('bus', 'BusController');
     Route::resource('stuff', 'StuffController');
     Route::resource('stoppages', 'StoppagesController');
+    Route::resource('schedules', 'ScheduleController');
 });

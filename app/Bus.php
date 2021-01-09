@@ -26,4 +26,9 @@ class Bus extends Model
     {
         return $this->belongsTo(Route::class);
     }
+
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

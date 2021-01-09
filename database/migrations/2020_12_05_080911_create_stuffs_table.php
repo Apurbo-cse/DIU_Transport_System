@@ -14,11 +14,14 @@ class CreateStuffsTable extends Migration
     public function up()
     {
         Schema::create('stuffs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('bus__categories');
-            $table->unsignedBigInteger('route_id');
-            $table->foreign('route_id')->references('id')->on('routes');
+            $table->id();
+
+            $table->bigIncrements('category_id');
+            $table->foreign('category_id')->references('id')->on('bus__categories')->onDelete('cascade');
+
+            $table->bigIncrements('route_id');
+            $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
+
             $table->string('bus_name')->nullable();
             $table->string('designation');
             $table->string('driver_name');
