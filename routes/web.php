@@ -22,7 +22,7 @@ Route::group(['middleware'=>['student','auth']], function (){
 
     /*Route::get('/', 'HomeController@index')->name('login');*/
 
-    //Route::get('schedule','ScheduleController@schedule')->name('schedule');
+    Route::get('schedule','ScheduleController@schedule')->name('schedule');
     Route::get('service','ServiceController@service')->name('service');
     Route::get('stuffinfo/{id}','ServiceController@stuffinfo')->name('stuffinfo');
 
@@ -50,10 +50,20 @@ Route::group(['middleware'=>['student','auth']], function (){
     //********Online Ticket*******//
 
     Route::get('online_ticket','TicketController@ticket')->name('online_ticket');
-    Route::get('available_bus','TicketController@availablebus')->name('available_bus');
+    Route::post('available_bus','TicketController@availablebus')->name('available_bus');
+
     Route::get('bus_location','TicketController@buslocation')->name('bus_location');
-    Route::get('seat','TicketController@seat')->name('seat');
-    Route::get('passanger_info','TicketController@passangerinfo')->name('passanger_info');
+    Route::get('seat/{price}','TicketController@seat')->name('seat');
+
+    Route::post('passanger_info','TicketController@passangerinfo')->name('passanger_info');
+
+    Route::get('add-to-cart/{id}', 'AddToCardController@addToCart')->name('add-cart');
+    Route::get('remove/{id}', 'AddToCardController@removeFromCart')->name('remove');
+    //add to card
+    /*Route::get('/', 'AddToCardController@index')->name('products');
+    Route::get('/cart', 'AddToCardController@cart')->name('cart');
+    Route::get('/add-to-cart/{product}', 'AddToCardController@addToCart')->name('add-cart');
+    */
 
 
 });

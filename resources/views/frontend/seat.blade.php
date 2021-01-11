@@ -43,7 +43,7 @@
         </li>
     </ul>
     <ul class="top-nav-mobile">
-        <li><a href="{{route('seat')}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+        <li><a href="{{route('seat', $bus->id)}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
     </ul>
 </div>
 
@@ -80,281 +80,112 @@
 
                 <div id="keyboard">
 
-                    <table style="text-align: center; margin-top:-10px;">
+                    <table style="text-align: center; margin-top:-10px;" id="all_set">
 
                         <tr>
                             <td>
 
                             </td>
-                            <td>
+
                             <td>
 
                             </td>
-                            <td>
+
                             <td>
 
                             </td>
-                            <td>
-                            <td>
 
-                            </td>
-                            <td>
                             <td>
                                 <button class="operator" style=" background-color: #fff;"><img src="{{asset('assets/frontend/icons/driver.png')}}" alt=""></button>
                             </td>
 
                         </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">A1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">A2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">A3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">A4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">B1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">B2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">B3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">B4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">C1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">C2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">C3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">C4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">D1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">D2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">D3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">D4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">E1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">E2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">E3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">E4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">F1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">F2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">F3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">F4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">G1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">G2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">G3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">G4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">H1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">H2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">H3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">H4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">I1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">I2</button>
-                            </td>
-                            <td>
-                            <td>
-
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">I3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">I4</button>
-                            </td>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="number" id="">J1</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">J2</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8"></button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">J3</button>
-                            </td>
-                            <td>
-                            <td>
-                                <button class="number" id="8">J4</button>
-                            </td>
-                            <td>
-                        </tr>
+                        @php
+                            $j = floor(($bus->total_seat)/4);
+                            $i = 0;
+                        @endphp
+                        @foreach(range('A', 'J') as $key=>$column)
+                            <tr style="color: #fff">
+                                @if($key == $j)
+                                    @break;
+                                @endif
+                                @php
+                                    $i = $i+1;
+                                @endphp
+                                    <td>
+                                        <a href="{{route('add-cart', $i)}}" class="number py-3">{{$column}}2</a>
+                                    </td>
+                                @if($key == $j)
+                                    @break;
+                                @endif
+                                    @php
+                                        $i = $i+1;
+                                    @endphp
+                                <td>
+                                    <a href="{{route('add-cart', $i)}}" class="number py-3">{{$column}}2</a>
+                                </td>
+                                @if($key == $j)
+                                    @break;
+                                @endif
+                                    @php
+                                        $i = $i+1;
+                                    @endphp
+                                <td>
+                                    <a href="{{route('add-cart', $i)}}" style="margin-left: 44px;" class="number py-3">{{$column}}3</a>
+                                </td>
+                                @if($key == $j)
+                                    @break;
+                                @endif
+                                    @php
+                                        $i = $i+1;
+                                    @endphp
+                                <td>
+                                    <a href="{{route('add-cart', $i)}}" class="number py-3">{{$column}}4</a>
+                                </td>
+                            </tr>
+                        @endforeach
 
                     </table>
-                    <tr></tr>
                 </div>
             </div>
         </div>
-
-        <br>
         <div class="content-side col-lg-7 col-md-12 col-sm-12">
-
-            <div class="tab">
+            <div class="mt-0">
+                @if(session('success'))
+                    <div class="alert alert-success" style="padding: 15px 10px; font-size: 15px; font-weight: bold;">
+                        {{session('success')}}
+                    </div>
+                @endif
+                @if(session('Error'))
+                    <div class="alert alert-danger" style="padding: 15px 10px; font-size: 15px; font-weight: bold;">
+                        {{session('Error')}}
+                    </div>
+                @endif
+            </div>
+            <div class="tab mt-0">
                 <b style="font-size: 18px; color: rgb(13, 24, 75);">Booking Details :</b>
                 <table class="table " style="font-size: 15px;text-align: center;   background-color: rgb(48, 151, 182);color: #fff;">
                     <tr>
                         <td>
-                            DIU - City Campus
+                            {{$bus->bus_id}}
                         </td>
                         <td>
-                            7:15 am
+                            @php
+                                $dt = new DateTime('now', new DateTimezone('Asia/Dhaka'));
+                            @endphp
+                            {{$dt->format('h:i A')}}
                         </td>
-                        <td>29-10-2020</td>
+                        <td>{{date('j S M y')}}</td>
                     </tr>
                 </table>
 
-
-
-                <table class="table table-bordered" style="font-size: 12px;text-align: center;   background-color: #fff;">
-
+                <table class="table table-bordered" id="content" style="font-size: 12px;text-align: center;   background-color: #fff;">
                     <tr style="background-color: rgb(83, 192, 219); color:#fff;">
                         <th style="font-size: 15px;">
                             Select Seat
+                        </th>
+                        <th style="font-size: 15px;">
+                            Quantity
                         </th>
                         <th style="font-size: 15px;">
                             Fare ৳
@@ -363,43 +194,52 @@
                             Action
                         </th>
                     </tr>
-                    <tr>
-                        <td style="font-size: 14px;">
-                            A1
-                        </td>
-                        <td style="font-size: 14px;">
-                            25
-                        </td>
-                        <td>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 14px;">
-                            A2
-                        </td>
-                        <td style="font-size: 14px;">
-                            25
-                        </td>
-                        <td>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </td>
-                    </tr>
+                    @php
+                        $total = 0;
+                        $sub_total = 0;
+                     @endphp
+                    @if(session('cart'))
+                        @foreach(session('cart') as $id => $product)
+                            @php
+                                $sub_total += ($bus->price) * ($product['quantity']);
+                                $total += $product['quantity'];
+                            @endphp
+                            <tr>
+                                <td style="font-size: 14px;">{{$product['seat_no']}}</td>
+                                <td style="font-size: 14px;">{{$product['quantity']}}</td>
+                                <td style="font-size: 14px;">{{$bus->price}}</td>
+                                <td><a href="{{route('remove', [$id])}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </table>
+                <table class="table table-bordered" style="font-size: 12px;text-align: center;   background-color: #fff;">
                     <tr>
                         <th style="font-size: 15px;">
-                            Total Seat : 2
+                            Total Seat : {{$total}}
                         </th>
                         <th colspan="2" style="font-size: 15px;">
-                            Total Amount ৳ : 50
+                            Total Amount ৳ : {{$sub_total}}
                         </th>
                     </tr>
-
                 </table>
                 <p></p>
                 <b style="color:rgb(34, 31, 31);font-size: 15px;">Choose Boarding Point :
                 </b>
                 <p></p>
-                <form>
+                <form action="{{route('passanger_info')}}" method="post">
+                    @csrf
+                    {{--route details--}}
+                    <input type="hidden" name="route_id" value="{{$bus->route_id}}">
+                    <input type="hidden" name="bus_id" value="{{$bus->bus_id}}">
+                    <input type="hidden" name="time" value="{{$bus->departure_time}}">
+                    <input type="hidden" name="date" value="{{$bus->date}}">
+
+                    {{--fare details--}}
+                    <input type="hidden" name="price" value="{{$bus->price}}">
+                    <input type="hidden" name="total_seat" value="{{$total}}">
+                    <input type="hidden" name="amount" value="{{$sub_total}}">
+
                     <select required style="width: 180px; background-color: #fff;
                     border-radius: 4px;
                     border: none;
@@ -407,31 +247,23 @@
                     -webkit-box-shadow: none;
                     box-shadow: none;
                     color: #3e485c;
-                    font-size: 14px;" required>
-                        <option value="">Select Option</option>
-                        <option value="">Dhanmondi</option>
-                        <option value="">Shymoli</option>
-                        <option value="">Tongi</option>
-                        <option value="">Mirpur-1</option>
-                        <option value="">Saver</option>
-                        <option value="">Uattara</option>
+                    font-size: 14px;" name="budding_point">
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Shymoli">Shymoli</option>
+                        <option value="Tongi">Tongi</option>
+                        <option value="Mirpur-1">Mirpur-1</option>
+                        <option value="Saver">Saver</option>
+                        <option value="Uattara">Uattara</option>
                     </select>
                     <span class="bokselect-arrow"></span><br><br>
-                    <button class="amz"><a href="{{route('passanger_info')}}">Next</button>
-
+                    <button class="amz" type="submit">Next</button>
                 </form>
             </div>
         </div>
     </div>
 
 </div>
-</div>
 
-<br><br>
-
-<br><br>
-<br><br>
-<br><br>
 <br><br>
 <br><br>
 <footer id="colophon" class="site-footer" style="background-color: black;" role="contentinfo">

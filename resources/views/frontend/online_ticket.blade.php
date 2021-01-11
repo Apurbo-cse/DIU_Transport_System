@@ -71,44 +71,26 @@
                 </div>
                 <div class="col-md-4 col-md-pull-7">
                     <div class="booking-form">
-                        <form>
+                        <form action="{{route('available_bus')}}" method="post">
+                            @csrf
                             <div class="bokform-group">
-                                <span class="bokform-label"> From</span>
-                                <select class="form-control" required>
-                                    <option value="">Select Route</option>
-                                    <option value="">DIU</option>
-                                    <option value="">City Campus Route</option>
-                                    <option value="">Mirpur Route</option>
-                                    <option value="">Uttara Route</option>
-                                    <option value="">Tongi College Gate Route</option>
-                                    <option value="">Others Route</option>
+                                <span class="bokform-label"> Select Route</span>
+                                <select name="route" class="form-control" required>
+                                    @foreach($routes as $route)
+                                        <option value="{{$route->id}}">{{$route->route_name}}</option>
+                                    @endforeach
                                 </select>
                                 <span class="bokselect-arrow"></span>
                             </div>
-                            <div class="bokform-group">
-                                <span class="bokform-label">To</span>
-                                <select class="form-control" required>
-                                    <option value="">Select Route</option>
-                                    <option value="">DIU</option>
-                                    <option value="">City Campus Route</option>
-                                    <option value="">Mirpur Route</option>
-                                    <option value="">Uttara Route</option>
-                                    <option value="">Tongi College Gate Route</option>
-                                    <option value="">Others Route</option>
-                                </select>
-                                <span class="bokselect-arrow"></span>
-                            </div>
-
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="bokform-group">
                                         <span class="bokform-label">Date</span>
-                                        <input class="form-control" id="minmaxdate" min="2020-11-21" max="2020-11-30" style="width: 160px;" type="date" required>
+                                        <input name="date" class="form-control" id="minmaxdate" min="2021-10-1" max="2025-11-30" style="width: 160px;" type="date" required>
                                     </div>
                                 </div>
                             </div>
-                            <button class="bokbtn"><a href="{{route('available_bus')}}" style="color: #fff;">Check availability</a> </button>
-
+                            <button type="submit" class="bokbtn">Check availability</button>
                         </form>
                     </div>
                 </div>

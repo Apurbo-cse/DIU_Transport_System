@@ -30,7 +30,7 @@
         </li>
     </ul>
     <ul class="top-nav-mobile">
-        <li><a href="{{route('passanger_info')}}" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+        <li><a {{--href="{{route('passanger_info')}}"--}} id="pull" class="toggle-mobile-menu"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
     </ul>
 </div>
 
@@ -40,7 +40,10 @@
 <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
 </div>
 <br><br>
-<section id="content" class="container">
+<div class="row">
+    <h3 class="text-center section-headingq" style="margin: 0;font-size: 37px;font-weight: bold;text-transform: capitalize;color: #868686;">Passenger Information</h3>
+</div>
+<section id="content" class="container" style="margin-bottom: 30px;">
     <form method="post" id="booknow" name="booknow" action="/booking/bus/pay-now" onkeypress="return event.keyCode != 13;">
 
         <!-- psngr_dtls starts -->
@@ -49,35 +52,31 @@
             <!-- psngr starts here -->
             <div id="psngr" class="col-md-8">
 
-                <div class="p_head">
-                    <h5>Passenger Details</h5>
-                </div>
-
                 <!-- p_body starts here -->
                 <div class="p_body">
                     <ul class="list-inline clearfix">
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">Name<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" placeholder="Mizanur Rahaman" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" placeholder="Mizanur Rahaman" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">ID<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" placeholder="171-15-1452" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->user_id}}" placeholder="171-15-1452" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">Email<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" placeholder="mizahur15-1452@diu.edu.bd" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->email}}" placeholder="mizahur15-1452@diu.edu.bd" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">Department<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" placeholder="CSE" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->department}}" placeholder="CSE" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                     </ul>
@@ -87,37 +86,48 @@
             </div>
             <!-- psngr ends here -->
             <!-- journey starts here -->
-            <aside id="journey" class="col-md-4 paside" style=" height: 235px;">
+            <aside id="journey" class="col-md-4 paside" style=" height: 270px;">
 
                 <div class="page_title">
                     <h4 class="title_Ablack"><b>Route Details</b></h4>
                 </div>
                 <table class="table table-bordered" style="font-size: 14px;">
                     <tr>
-                        <td>Departure</td>
+                        <td>Route</td>
                         <td> :</td>
-                        <td>DIU- Danmondi</td>
+                        <td>{{$passangeinfo->route_id}}</td>
                     </tr>
 
                     <tr>
                         <td>Coach No</td>
                         <td> :</td>
-                        <td>Rojonigondha 1</td>
+                        <td>{{$passangeinfo->bus_id}}</td>
                     </tr>
                     <tr>
                         <td>Select Seat (S)</td>
                         <td> :</td>
-                        <td>A1</td>
+                        <td>
+                            @if(session('cart'))
+                                @foreach(session('cart') as $id => $product)
+                                    {{$product['seat_no']}},
+                                @endforeach
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <td>Date</td>
                         <td> :</td>
-                        <td>10-12-2020</td>
+                        <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $passangeinfo->date)->format('jS M y') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td> :</td>
+                        <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$passangeinfo->time)->format('h:i A')}}</td>
                     </tr>
                     <tr>
                         <td>Boarding Point</td>
                         <td> :</td>
-                        <td>DIU [ 7:15am ]</td>
+                        <td>{{$passangeinfo->budding_point}}</td>
                     </tr>
                 </table>
 
@@ -130,18 +140,18 @@
         <section id="payment_dtls">
 
             <!-- fare starts here -->
-            <aside id="fare" class="col-md-4 paside col-md-push-8" oncontextmenu="return false;">
+            <aside id="fare" class="col-md-4 paside col-md-push-8" oncontextmenu="return false;" style="margin-top: 30px;">
 
                 <div class="page_title">
                     <h4 class="title_Ablack"><b>Fare Details</b></h4>
                 </div>
 
                 <ul>
-                    <li>Ticket Price <span id="display_ticket_price">25</span></li>
+                    <li>Ticket Price <span id="display_ticket_price">{{$passangeinfo->price}}</span></li>
                     <li>Processing Fee <span id="display_shohoz_fee">0</span></li>
-                    <li>Seat <span id="display_shohoz_fee">1</span></li>
+                    <li>Total Seat <span id="display_shohoz_fee">{{$passangeinfo->total_seat}}</span></li>
 
-                    <li><b>Total <span id="display_total">25</span></b></li>
+                    <li><b>Total <span id="display_total">{{$passangeinfo->amount}}</span></b></li>
                 </ul>
 
                 <div class="col-md-12 bg-warning" style="padding:5px 5px;margin-top:20px;border:1px solid #079d49;">
@@ -157,15 +167,14 @@
             <!-- fare ends here -->
 
             <!-- psngr starts here -->
-            <div id="payment" class="col-md-8 col-md-pull-4">
+            <div id="payment" class="col-md-8 col-md-pull-4" style="margin-top: -15px;">
 
                 <div class="p_head">
                     <h5>Payment Details</h5>
                 </div>
 
                 <div id="amnt_pay">
-                    <h3>Total Amount Payable: <span id="display_total_payable">৳ 25</span></h3>
-
+                    <h3>Total Amount Payable: <span id="display_total_payable">৳ {{$passangeinfo->amount}}</span></h3>
                 </div>
 
                 <div id="payment_options">
@@ -274,8 +283,6 @@
                 </div>
             </div>
             <!-- p_body ends here -->
-
-            </div>
             <!-- psngr ends here -->
 
             <div class="clearfix"></div>

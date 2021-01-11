@@ -58,7 +58,7 @@
                                 <td>{{$schedule->price}}</td>
                                 <td>{{$schedule->total_seat}}</td>
                                 <td>{{$schedule->left_seat}}</td>
-                                <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$schedule->departure_time)->format('h:i')}}</td>
+                                <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$schedule->departure_time)->format('h:i A')}}</td>
                                 <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $schedule->date)->format('jS M y') }}</td>
                                 <td>{{$schedule->status? 'Active': 'Inactive'}}</td>
                                 <td class="d-flex">

@@ -58,12 +58,11 @@
             <main id="main" class="site-main" role="main">
 
                 <article id="post-228" class="post-228 page type-page status-publish hentry">
-
                     <div class="entry-content">
                         <div class="abx">
                             <b>Available Bus</b>
-                            <p style="margin-left: 10px; margin-bottom: -1px;">DIU- City Campus </p>
-                            <p style="margin-left: 10px; margin-bottom: -1px;">21-10-2020 </p>
+                            <p style="margin-left: 10px; margin-bottom: -1px;">{{$rout}}</p>
+                            <p style="margin-left: 10px; margin-bottom: -1px;">{{ Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('jS M y') }}</p>
                         </div>
                         <div class="hidden-xy">
                             <div class="row">
@@ -74,7 +73,7 @@
                                     <b>Time</b>
                                 </div>
                                 <div class="col-sm-3">
-                                    <b>Seats Capacity</b>
+                                    <b>Seats Left</b>
                                 </div>
                                 <div class="col-sm-3 " style=' text-align:right '>
                                     <b>Fare (BDT)</b>
@@ -83,39 +82,34 @@
                         </div>
 
                         <div class="eabzn">
+                            @foreach($buses as $bus)
                             <div class="eabd">
-
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Name</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <h4>Suryamukhi</h4>
+                                            <h4>{{$bus->bus->name}}</h4>
                                         </div>
 
-                                        <div class='bldec '>
+                                        {{--<div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Type</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p><small class='bus_name '>AC</small></p>
-                                        </div>
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Coach No</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p><small class="coach_no">Suryamukhi 1</small></p>
-                                        </div>
+                                            <p><small class='bus_name '>ac</small></p>
+                                        </div>--}}
                                     </div>
                                     <div class="col-sm-2">
                                         <div class='bldec '>
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p>7:15 am</p>
+                                            <p>{{\Carbon\Carbon::createFromFormat('H:i:s',$bus->departure_time)->format('h:i A')}}</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Seat Capacity</p>
+                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Left seat</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p>40</p>
+                                            <p>{{$bus->left_seat}}</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -123,11 +117,11 @@
                                             <p class='hidden-sm hidden-md hidden-lg vliss '>Price (BDT)</p>
                                             <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
                                             <h4 style='text-align:right '>
-                                                <span class='sfof1592 '>25</span> </h4>
+                                            <span class='sfof1592 '>{{$bus->price}}</span> </h4>
                                         </div>
                                         <div class="clearfix">
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="{{route('seat')}}" style="color: #fff;">View Seats</a>
+                                                <a href="{{route('seat', $bus->id)}}" style="color: #fff;">View Seats</a>
                                             </p>
                                             <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
                                                 <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
@@ -136,61 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="eabzn">
-                            <div class="eabd">
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Name</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <h4>Suryamukhi</h4>
-                                        </div>
-
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Type</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p><small class='bus_name '>AC</small></p>
-                                        </div>
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Coach No</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p><small class="coach_no">Suryamukhi 1</small></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p>7:15 am</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Seat Capacity</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p>40</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Price (BDT)</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <h4 style='text-align:right '>
-                                                <span class='sfof1592 '>25</span> </h4>
-                                        </div>
-                                        <div class="clearfix">
-                                            <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="{{route('seat')}}" style="color: #fff;">View Seats</a>
-                                            </p>
-                                            <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div style="padding: 10px">
                             <div style="background-color: #f7f7f7;margin: 50px 0;box-shadow: 0 0 3px #ccc;text-align:center" class='paywithimage '>
