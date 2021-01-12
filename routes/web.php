@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SslCommerzPaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +67,20 @@ Route::group(['middleware'=>['student','auth']], function (){
     */
 
 
+    Route::get('/success', [SslCommerzPaymentController::class, 'successMessage']);
+    Route::post('/successInfo', [SslCommerzPaymentController::class, 'successInfo']);
+
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay');
+    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
+
 });
 
 Auth::routes([
@@ -80,6 +95,8 @@ Route::get('admin/login', 'Admin\DashboardController@login')->name('admin.login'
 
 Route::group(['prefix'=>'admin', 'middleware'=>['admin','auth'], 'namespace'=>'Admin'], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
+    Route::get('orders', 'OrderController@index')->name('admin.order');
+    Route::get('payment', 'OrderController@payment')->name('admin.payment');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('slider', 'SliderController');

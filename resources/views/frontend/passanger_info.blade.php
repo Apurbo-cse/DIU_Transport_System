@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="{{asset('assets/frontend/style/footer.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="{{asset('assets/frontend/style/contact.css')}}">
     <link href="{{asset('assets/frontend/style/nav.css')}}" rel="stylesheet">
@@ -40,11 +41,12 @@
 <div style="width: 100%;height:50px ; background: rgb(6, 100, 121)">
 </div>
 <br><br>
-<div class="row">
-    <h3 class="text-center section-headingq" style="margin: 0;font-size: 37px;font-weight: bold;text-transform: capitalize;color: #868686;">Passenger Information</h3>
+<div class="row text-center">
+    <h3 style="margin: 0 auto;font-size: 37px;font-weight: bold;text-transform: capitalize;color: #868686;">Passenger Information</h3>
 </div>
 <section id="content" class="container" style="margin-bottom: 30px;">
-    <form method="post" id="booknow" name="booknow" action="/booking/bus/pay-now" onkeypress="return event.keyCode != 13;">
+    <form method="post" id="booknow" name="booknow" action="{{route('pay')}}" onkeypress="return event.keyCode != 13;">
+        @csrf
 
         <!-- psngr_dtls starts -->
         <section id="psngr_dtls">
@@ -58,25 +60,32 @@
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">Name<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" placeholder="Mizanur Rahaman" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname" id="pname" name="name" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" placeholder="Mizanur Rahaman" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">ID<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->user_id}}" placeholder="171-15-1452" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname" id="pname" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->user_id}}" placeholder="171-15-1452" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">Email<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->email}}" placeholder="mizahur15-1452@diu.edu.bd" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname jqchars" id="pname" name="email" value="{{\Illuminate\Support\Facades\Auth::user()->email}}" placeholder="mizahur15-1452@diu.edu.bd" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                         <li class="srch_input_wd">
                             <div class="form-group">
                                 <label for="pname">Department<span>*</span></label>
-                                <input type="text" class="form-control pname jqchars" id="pname" name="pname[]" value="{{\Illuminate\Support\Facades\Auth::user()->department}}" placeholder="CSE" maxlength="25" onpaste="return false;">
+                                <input type="text" class="form-control pname jqchars" id="pname" name="department" value="{{\Illuminate\Support\Facades\Auth::user()->department}}" placeholder="CSE" maxlength="25" onpaste="return false;">
+                            </div>
+                        </li>
+
+                        <li class="srch_input_wd">
+                            <div class="form-group">
+                                <label for="pname">Phone<span>*</span></label>
+                                <input type="text" class="form-control pname jqchars" id="pname" name="phone" value="{{\Illuminate\Support\Facades\Auth::user()->phone_no}}" placeholder="+88017xxxxxx" maxlength="25" onpaste="return false;">
                             </div>
                         </li>
                     </ul>
@@ -94,40 +103,35 @@
                 <table class="table table-bordered" style="font-size: 14px;">
                     <tr>
                         <td>Route</td>
-                        <td> :</td>
-                        <td>{{$passangeinfo->route_id}}</td>
+                        <td><input type="text" name="route_id" value="{{$passangeinfo->route_id}}" readonly></td>
                     </tr>
 
                     <tr>
                         <td>Coach No</td>
-                        <td> :</td>
-                        <td>{{$passangeinfo->bus_id}}</td>
+                        <td><input type="text" name="bus_id" value="{{$passangeinfo->bus_id}}" readonly></td>
                     </tr>
                     <tr>
                         <td>Select Seat (S)</td>
-                        <td> :</td>
                         <td>
+
                             @if(session('cart'))
                                 @foreach(session('cart') as $id => $product)
-                                    {{$product['seat_no']}},
+                                    <input class="d-inline" checked type="checkbox" name="seat_no[]" value="{{$product['seat_no']}}">{{$product['seat_no']}}
                                 @endforeach
                             @endif
                         </td>
                     </tr>
                     <tr>
                         <td>Date</td>
-                        <td> :</td>
-                        <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $passangeinfo->date)->format('jS M y') }}</td>
+                        <td><input type="text" name="date" value="{{$passangeinfo->date}}" readonly></td>
                     </tr>
                     <tr>
                         <td>Time</td>
-                        <td> :</td>
-                        <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$passangeinfo->time)->format('h:i A')}}</td>
+                        <td><input type="text" name="time" value="{{$passangeinfo->time}}" readonly></td>
                     </tr>
                     <tr>
                         <td>Boarding Point</td>
-                        <td> :</td>
-                        <td>{{$passangeinfo->budding_point}}</td>
+                        <td><input type="text" name="boarding_point" value="{{$passangeinfo->budding_point}}" readonly></td>
                     </tr>
                 </table>
 
@@ -146,22 +150,53 @@
                     <h4 class="title_Ablack"><b>Fare Details</b></h4>
                 </div>
 
-                <ul>
-                    <li>Ticket Price <span id="display_ticket_price">{{$passangeinfo->price}}</span></li>
-                    <li>Processing Fee <span id="display_shohoz_fee">0</span></li>
-                    <li>Total Seat <span id="display_shohoz_fee">{{$passangeinfo->total_seat}}</span></li>
+                <table class="table table-bordered" style="font-size: 14px;">
+                    <tr>
+                        <td>Ticket Price</td>
+                        <td><input type="text" name="price" value="{{$passangeinfo->price}}" readonly></td>
+                    </tr>
 
-                    <li><b>Total <span id="display_total">{{$passangeinfo->amount}}</span></b></li>
-                </ul>
+                    <tr>
+                        <td>Processing Fee</td>
+                        <td><span>0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Total seat</td>
+                        <td><input type="text" name="totoal_seat" readonly value="{{$passangeinfo->total_seat}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Amount</td>
+                        <td><input type="text" name="total" value="{{$passangeinfo->amount}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td><input type="text" name="time" value="{{\Carbon\Carbon::createFromFormat('H:i:s',$passangeinfo->time)->format('h:i A')}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Boarding Point</td>
+                        <td><input type="text" name="boarding_point" value="{{$passangeinfo->budding_point}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="col-md-12 bg-warning" style="padding:5px 5px;margin-top:20px;border:1px solid #079d49;">
+                                <b style="color:#fc0202;">Please note:</b> <br>
+                                <ol style="background-color: transparent;padding-left:15px;">
+                                    <li style="background-color: transparent;border-bottom: none;">Delivery Charge : <b style="color:#fc0202;">Free</b> per delivery.
+                                    </li>
+                                </ol>
 
-                <div class="col-md-12 bg-warning" style="padding:5px 5px;margin-top:20px;border:1px solid #079d49;">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                {{--<div class="col-md-12 bg-warning" style="padding:5px 5px;margin-top:20px;border:1px solid #079d49;">
                     <b style="color:#fc0202;">Please note:</b> <br>
                     <ol style="background-color: transparent;padding-left:15px;">
                         <li style="background-color: transparent;border-bottom: none;">Delivery Charge : <b style="color:#fc0202;">Free</b> per delivery.
                         </li>
                     </ol>
 
-                </div>
+                </div>--}}
             </aside>
 
             <!-- fare ends here -->
@@ -177,110 +212,8 @@
                     <h3>Total Amount Payable: <span id="display_total_payable">৳ {{$passangeinfo->amount}}</span></h3>
                 </div>
 
-                <div id="payment_options">
+                <button style="font-size: 20px; font-weight: bold;" class="btn btn-primary btn-block btn-lg py-3" type="submit">Checkout Now</button>
 
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs nav-tabs-payment">
-                        <li class="active"><a href="#bKash" id="tbkash" data-toggle="tab">
-                                Mobile Banking
-                            </a></li>
-                        <li><a href="#all_banking" id="tall_banking" data-toggle="tab">Diu Payment</a></li>
-                        <li><a href="#cod" id="tcod" data-toggle="tab">Debit Or Credit Card</a></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-
-                        <!-- Mobile banking -->
-                        <div class="tab-pane active" id="bKash">
-                            <div id="bKash-panel-info">
-                                <div class="col-md-12 info">
-                                    <div class="col-md-12">
-
-                                        <div class="row">
-                                            <p>
-                                                Please Select a Payment Method - Moblie Banking
-                                            </p>
-                                            <a href="bkash.html">
-                                                <div class="col-md-3 col-xs-6 bkash_container" id="bkash_payment">
-                                                    <p class="logo_svg">
-                                                        <img src="{{asset('assets/frontend/icons/bkash_logo.png')}}" alt="bkash" />
-                                                        <span>bKash</span>
-                                                    </p>
-                                            </a>
-                                        </div>
-                                        <a href="#" style="text-decoration: none;">
-                                            <div class="col-md-3  col-xs-6 logo_container" id="mfs_payment">
-                                                <p class="logo_svg">
-                                                    <img src="{{asset('assets/frontend/icons/rocket.svg')}}" alt="rocket" />
-                                                    <span>rocket</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <!-- debit or credit -->
-                    <div class="tab-pane" id="cod">
-                        <div id="bKash-panel-info">
-                            <div class="col-md-12 info">
-                                <div class="col-md-12">
-
-                                    <div class="row">
-                                        <p>
-                                            Please Select a Payment Method - Debit or Credit
-                                        </p>
-                                        <a href="#" style="text-decoration: none;">
-                                            <div class="col-md-3 col-xs-6 bkash_container" id="bkash_payment">
-                                                <p class="logo_svg">
-                                                    <span>Mster Card</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <!-- Diu paymentt -->
-                    <div class="tab-pane" id="all_banking">
-                        <div id="bKash-panel-info">
-                            <div class="col-md-12 info">
-                                <div class="col-md-12">
-
-                                    <div class="row">
-                                        <p>
-                                            Please Select a Payment Method - DIU Payement
-                                        </p>
-                                        <a href="#" style="text-decoration: none;">
-                                            <div class="col-md-3 col-xs-6 bkash_container" id="bkash_payment">
-                                                <p class="logo_svg">
-
-                                                    <span>ONE CARD</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                        <a href="#" style="text-decoration: none;">
-                                            <div class="col-md-3  col-xs-6 logo_container" id="mfs_payment">
-                                                <p class="logo_svg">
-
-                                                    <span>DIU ID</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <!-- p_body ends here -->
             <!-- psngr ends here -->
@@ -288,7 +221,8 @@
             <div class="clearfix"></div>
         </section>
         <!-- payment_dtls ends -->
-        <input type="hidden" id="search_id" name="search_id" value="MA==">
+        {{--<input type="hidden" id="search_id" name="search_id" value="MA==">--}}
+
     </form>
 </section>
 
