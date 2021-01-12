@@ -166,7 +166,7 @@
                     </tr>
                     <tr>
                         <td>Total Amount</td>
-                        <td><input type="text" name="total" value="{{$passangeinfo->amount}}" readonly></td>
+                        <td><input type="text" name="amount" value="{{$passangeinfo->amount}}" readonly></td>
                     </tr>
                     <tr>
                         <td>Time</td>

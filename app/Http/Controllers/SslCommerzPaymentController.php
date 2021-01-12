@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class SslCommerzPaymentController extends Controller
 {
+    public function exampleEasyCheckout()
+    {
+        return view('exampleEasycheckout');
+    }
+
+    public function exampleHostedCheckout()
+    {
+        return view('exampleHosted');
+    }
 
     public function index(Request $request)
     {
@@ -25,7 +34,7 @@ class SslCommerzPaymentController extends Controller
 
         $post_data['user_id'] = Auth::id();
         $post_data['phone'] = $request->phone;
-        $post_data['total_amount'] = $request->price;
+        $post_data['total_amount'] = $request->amount;
         $post_data['route_id'] = $request->route_id;
         $post_data['bus_id'] = $request->bus_id;
         $post_data['departure_time'] = date('H:i:s', strtotime(str_replace('-', '/', $request->time)));
@@ -33,6 +42,8 @@ class SslCommerzPaymentController extends Controller
         $post_data['seat_no'] = $seat;
         $post_data['tran_id'] = uniqid();
         $post_data['currency'] = "BDT";
+
+        //dd($post_data['total_amount']);
 
         //return $post_data;
 
@@ -175,7 +186,9 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
+
         echo "Transaction is Successful";
+        dd($request);
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -201,13 +214,13 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
-                $data['transaction_message'] = 'Transaction is successfully Completed';
+                /*$data['transaction_message'] = 'Transaction is successfully Completed';
                 $data['type'] = 'success';
                 $this->cardSessionUnset();
 
-                return view('frontend.transaction_message.blade', $data);
+                return view('frontend.transaction_message.blade', $data);*/
 
-                //echo "<br >Transaction is successfully Completed";
+                echo "<br >Transaction is successfully Completed";
             } else {
                 /*
                 That means IPN did not work or IPN URL was not set in your merchant panel and Transation validation failed.
@@ -217,29 +230,30 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Failed']);
 
-                $data['transaction_message'] = 'validation Fail';
+               /* $data['transaction_message'] = 'validation Fail';
                 $data['type'] = 'fail';
 
                 return view('frontend.transaction_message.blade', $data);
-                //echo "validation Fail";
+                //*/
+               echo "validation Fail";
             }
         } else if ($order_detials->status == 'Processing' || $order_detials->status == 'Complete') {
             /*
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
-            $data['transaction_message'] = 'Transaction is successfully Completed';
+            /*$data['transaction_message'] = 'Transaction is successfully Completed';
             $data['type'] = 'success';
             $this->cardSessionUnset();
 
-            return view('frontend.transaction_message.blade', $data);
-            //echo "Transaction is successfully Completed";
+            return view('frontend.transaction_message.blade', $data);*/
+            echo "Transaction is successfully Completed";
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
-            $data['transaction_message'] = 'Invalid Transaction';
+           /* $data['transaction_message'] = 'Invalid Transaction';
             $data['type'] = 'fail';
 
-            return view('frontend.transaction_message.blade', $data);
-            //echo "Invalid Transaction";
+            return view('frontend.transaction_message.blade', $data);*/
+            echo "Invalid Transaction";
         }
 
 
