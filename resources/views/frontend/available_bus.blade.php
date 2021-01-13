@@ -61,7 +61,7 @@
                     <div class="entry-content">
                         <div class="abx">
                             <b>Available Bus</b>
-                            <p style="margin-left: 10px; margin-bottom: -1px;">{{$rout}}</p>
+                            <p style="margin-left: 10px; margin-bottom: -1px;">{{$rout->route_name}}</p>
                             <p style="margin-left: 10px; margin-bottom: -1px;">{{ Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('jS M y') }}</p>
                         </div>
                         <div class="hidden-xy">
@@ -82,55 +82,66 @@
                         </div>
 
                         <div class="eabzn">
-                            @foreach($buses as $bus)
-                            <div class="eabd">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Name</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <h4>{{$bus->bus->name}}</h4>
-                                        </div>
+                            @if($buses->count() > 0)
+                                @foreach($buses as $bus)
+                                <div class="eabd">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class='bldec '>
+                                                <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Name</p>
+                                                <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                                <h4>{{$bus->bus->name}}</h4>
+                                            </div>
 
-                                        {{--<div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Type</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p><small class='bus_name '>ac</small></p>
-                                        </div>--}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p>{{\Carbon\Carbon::createFromFormat('H:i:s',$bus->departure_time)->format('h:i A')}}</p>
+                                            {{--<div class='bldec '>
+                                                <p class='hidden-sm hidden-md hidden-lg vliss '>Bus Type</p>
+                                                <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                                <p><small class='bus_name '>ac</small></p>
+                                            </div>--}}
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Left seat</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <p>{{$bus->left_seat}}</p>
+                                        <div class="col-sm-2">
+                                            <div class='bldec '>
+                                                <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
+                                                <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                                <p>{{\Carbon\Carbon::createFromFormat('H:i:s',$bus->departure_time)->format('h:i A')}}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class='bldec '>
-                                            <p class='hidden-sm hidden-md hidden-lg vliss '>Price (BDT)</p>
-                                            <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
-                                            <h4 style='text-align:right '>
-                                            <span class='sfof1592 '>{{$bus->price}}</span> </h4>
+                                        <div class="col-sm-3">
+                                            <div class='bldec '>
+                                                <p class='hidden-sm hidden-md hidden-lg vliss '>Left seat</p>
+                                                <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                                <p>{{$bus->left_seat}}</p>
+                                            </div>
                                         </div>
-                                        <div class="clearfix">
-                                            <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="{{route('seat', $bus->id)}}" style="color: #fff;">View Seats</a>
-                                            </p>
-                                            <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
-                                                <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
-                                            </p>
+                                        <div class="col-sm-3">
+                                            <div class='bldec '>
+                                                <p class='hidden-sm hidden-md hidden-lg vliss '>Price (BDT)</p>
+                                                <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
+                                                <h4 style='text-align:right '>
+                                                <span class='sfof1592 '>{{$bus->price}}</span> </h4>
+                                            </div>
+                                            <div class="clearfix">
+                                                <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
+                                                    <a href="{{route('seat', $bus->id)}}" style="color: #fff;">View Seats</a>
+                                                </p>
+                                                <p class="btn btn-primary btn-xs pull-right abdvb" style="margin-left: 10px;">
+                                                    <a href="{{route('bus_location')}}" style="color: #fff;">Track Bus</a>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
+                                @endforeach
+                             @else
+                                <div class="eabd">
+                                    <div class="row">
+                                        <h3 class="text-capitalize text-danger ml-4">Sorry !! Not available Bus This route or time</h3>
+                                    </div>
+                                    <div class="row">
+                                        <a class="btn mx-auto btn-success" style="font-size: 20px; padding: 10px 20px;" href="{{route('online_ticket')}}">Back</a>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <div style="padding: 10px">
                             <div style="background-color: #f7f7f7;margin: 50px 0;box-shadow: 0 0 3px #ccc;text-align:center" class='paywithimage '>

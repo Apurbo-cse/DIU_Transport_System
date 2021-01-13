@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\Schedule;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +61,11 @@ class UserController extends Controller
 
     public function ticketlist(){
 
-        return view('frontend.ticket_list');
+        $data['tickets'] = Order::where('user_id', Auth::id())
+            ->where('status', 'Processing')
+            ->orderBy('id','DESC')
+            ->get();
+        //return $data;
+        return view('frontend.ticket_list', $data);
     }
 }

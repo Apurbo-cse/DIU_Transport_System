@@ -105,42 +105,47 @@
                             $i = 0;
                         @endphp
                         @foreach(range('A', 'J') as $key=>$column)
+
                             <tr style="color: #fff">
                                 @if($key == $j)
                                     @break;
                                 @endif
                                 @php
                                     $i = $i+1;
+                                    $seat = $column.'1';
                                 @endphp
                                     <td>
-                                        <a href="{{route('add-cart', $i)}}" class="number py-3">{{$column}}2</a>
+                                        <a @if(in_array($seat, $value)) href="#" style="background-color:red;" @else href="{{route('add-cart', $i)}}" @endif class="number py-3">{{$column}}1</a>
                                     </td>
                                 @if($key == $j)
                                     @break;
                                 @endif
                                     @php
                                         $i = $i+1;
+                                        $seat = $column.'2';
                                     @endphp
                                 <td>
-                                    <a href="{{route('add-cart', $i)}}" class="number py-3">{{$column}}2</a>
+                                    <a @if(in_array($seat, $value)) href="#" style="background-color:red;" @else href="{{route('add-cart', $i)}}" @endif class="number py-3">{{$column}}2</a>
                                 </td>
                                 @if($key == $j)
                                     @break;
                                 @endif
                                     @php
                                         $i = $i+1;
+                                        $seat = $column.'3';
                                     @endphp
                                 <td>
-                                    <a href="{{route('add-cart', $i)}}" style="margin-left: 44px;" class="number py-3">{{$column}}3</a>
+                                    <a @if(in_array($seat, $value)) href="#" style="background-color:red; margin-left: 44px;" @else href="{{route('add-cart', $i)}}" @endif style="margin-left: 44px;" class="number py-3">{{$column}}3</a>
                                 </td>
                                 @if($key == $j)
                                     @break;
                                 @endif
                                     @php
                                         $i = $i+1;
+                                        $seat = $column.'4';
                                     @endphp
                                 <td>
-                                    <a href="{{route('add-cart', $i)}}" class="number py-3">{{$column}}4</a>
+                                    <a @if(in_array($seat, $value)) href="#" style="background-color:red;" @else href="{{route('add-cart', $i)}}" @endif class="number py-3">{{$column}}4</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -167,7 +172,7 @@
                 <table class="table " style="font-size: 15px;text-align: center;   background-color: rgb(48, 151, 182);color: #fff;">
                     <tr>
                         <td>
-                            {{$bus->bus_id}}
+                            {{$bus->bus->name}}
                         </td>
                         <td>
                             @php
@@ -175,7 +180,7 @@
                             @endphp
                             {{$dt->format('h:i A')}}
                         </td>
-                        <td>{{date('j S M y')}}</td>
+                        <td>{{ Carbon\Carbon::createFromFormat('Y-m-d', $bus->date)->format('jS M y') }}</td>
                     </tr>
                 </table>
 
@@ -234,6 +239,7 @@
                     <input type="hidden" name="bus_id" value="{{$bus->bus_id}}">
                     <input type="hidden" name="time" value="{{$bus->departure_time}}">
                     <input type="hidden" name="date" value="{{$bus->date}}">
+                    <input type="hidden" name="schedule_id" value="{{$schedule_id}}">
 
                     {{--fare details--}}
                     <input type="hidden" name="price" value="{{$bus->price}}">

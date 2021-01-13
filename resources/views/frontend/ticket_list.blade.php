@@ -85,7 +85,33 @@
             <div class="eabzn ">
                 <div class="eabd ">
                     <div class="row " style="font-size: 13px; ">
-                        <div class="col-sm-2 ">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#SL</th>
+                                    <th>Departure</th>
+                                    <th>Bus Name</th>
+                                    <th>Seat</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($tickets as $key=>$ticket)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$ticket->route->route_name}}</td>
+                                    <td>{{$ticket->bus->name}}</td>
+                                    <td>{{$ticket->seat_no}}</td>
+                                    <td>{{$ticket->date}}</td>
+                                    <td>{{$ticket->departure_time}}</td>
+                                    <td>{{$ticket->amount}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {{--<div class="col-sm-2 ">
                             <div class='bldec '>
                                 <p class='hidden-sm hidden-md hidden-lg vliss '>Departure</p>
                                 <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
@@ -116,7 +142,7 @@
 
                         <div class="col-sm-2 ">
                             <div class='bldec '>
-                                <p class='hidden-sm hidden-md hidden-lg vliss '>Boarding Point</p>
+                                <p class='hidden-sm hidden-md hidden-lg vliss '>Time</p>
                                 <p class='hidden-sm hidden-md hidden-lg vsiss '> : </p>
                                 <p>DIU [ 7:15 am ]</p>
                             </div>
@@ -128,7 +154,7 @@
                                 <p>25</p>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>

@@ -47,6 +47,7 @@
 <section id="content" class="container" style="margin-bottom: 30px;">
     <form method="post" id="booknow" name="booknow" action="{{route('pay')}}" onkeypress="return event.keyCode != 13;">
         @csrf
+        <input type="hidden" name="schedule_id" value="{{$passangeinfo->schedule_id}}">
 
         <!-- psngr_dtls starts -->
         <section id="psngr_dtls">
